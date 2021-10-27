@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainRouterProtocol: BaseRouter {
     func initialViewController()
-    func showRecipeController()
+    func showRecipeController(dish: Dish)
 }
 
 class MainRouter: MainRouterProtocol {
@@ -24,13 +24,13 @@ class MainRouter: MainRouterProtocol {
         self.assemblyBuilder = assemblyBuilder
     }
     func initialViewController() {
-        guard let mainViewController = assemblyBuilder?.createMainController() else { return }
+        guard let mainViewController = assemblyBuilder?.createMainController(router: self) else { return }
         mainViewController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage.TabBarIcons.home,
                                                      selectedImage: UIImage.TabBarIcons.homeSelected)
         navigationController.viewControllers = [mainViewController]
     }
-    func showRecipeController() {
+    func showRecipeController(dish: Dish) {
         guard let detailViewController = assemblyBuilder?.createRecipeController() else { return }
         navigationController.pushViewController(detailViewController, animated: true)
     }

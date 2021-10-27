@@ -8,16 +8,20 @@
 import UIKit
 
 protocol AssemblyBuilderProtocol {
-    func createMainController() -> UIViewController
+    func createMainController(router: MainRouterProtocol) -> UIViewController
     func createFavoriteFoodController() -> UIViewController
     func createRecipeController() -> UIViewController
     func createAuthorizationModule() -> UIViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
-    func createMainController() -> UIViewController {
+    private let networkService = NetworkService()
+    func createMainController(router: MainRouterProtocol) -> UIViewController {
         let view = MainViewController()
-        // TODO: - Добавить презентер и настройки
+        let presenter = MainPresenter(view: view,
+                                      networkService: networkService,
+                                      router: router)
+        view.presenter = presenter
         return view
     }
     func createFavoriteFoodController() -> UIViewController {

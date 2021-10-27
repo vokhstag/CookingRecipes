@@ -8,12 +8,22 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    var presenter: MainViewPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 
+}
+
+extension MainViewController: MainViewProtocol {
+    func succes() {
+        print(presenter.dishes?.first ?? "NIL")
+    }
+    func failure(error: Error) {
+        print(error.localizedDescription)
+    }
 }
 
 // MARK: - Setup
