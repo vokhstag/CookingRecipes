@@ -5,12 +5,16 @@
 //  Created by Yunus Abubakarov on 27.10.2021.
 //
 
-import Foundation
+import UIKit
 
-protocol MainRouterProtocol {
+protocol MainRouterProtocol: BaseRouter {
     
 }
 
-class MainRouter {
+class MainRouter: MainRouterProtocol {
+    var tabBarController: UITabBarController?
+    var navigationController: UINavigationController?
+    var assemblyBuilder: AssemblyBuilderProtocol?
+    
     
 }
