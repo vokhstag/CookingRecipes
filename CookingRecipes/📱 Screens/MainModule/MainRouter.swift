@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MainRouterProtocol: BaseRouter {
-    
+    func initialViewController()
+    func showRecipeController()
 }
 
 class MainRouter: MainRouterProtocol {
@@ -24,6 +25,9 @@ class MainRouter: MainRouterProtocol {
     }
     func initialViewController() {
         guard let mainViewController = assemblyBuilder?.createMainController() else { return }
+        mainViewController.tabBarItem = UITabBarItem(title: "Home",
+                                                     image: UIImage.TabBarIcons.home,
+                                                     selectedImage: UIImage.TabBarIcons.home)
         navigationController.viewControllers = [mainViewController]
     }
     func showRecipeController() {

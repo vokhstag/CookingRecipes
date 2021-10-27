@@ -24,6 +24,7 @@
 		853E86032729369200B56679 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E86022729369200B56679 /* BaseRouter.swift */; };
 		853E860B27293A5100B56679 /* FavoriteFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E860A27293A5100B56679 /* FavoriteFoodViewController.swift */; };
 		853E861227293B2300B56679 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E861127293B2300B56679 /* RecipeViewController.swift */; };
+		853E861B27294E7700B56679 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E861A27294E7700B56679 /* UIImageExtension.swift */; };
 		B01928734DE776F3FD210845 /* Pods_CookingRecipes_CookingRecipesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C3F1C7579BA5B9714DADA6 /* Pods_CookingRecipes_CookingRecipesUITests.framework */; };
 		D0AFEC7DB79B1DF27DAA280A /* Pods_CookingRecipesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE0BF8C6AFDF944C835F491 /* Pods_CookingRecipesTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		853E86022729369200B56679 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		853E860A27293A5100B56679 /* FavoriteFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodViewController.swift; sourceTree = "<group>"; };
 		853E861127293B2300B56679 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		853E861A27294E7700B56679 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		89C3F1C7579BA5B9714DADA6 /* Pods_CookingRecipes_CookingRecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookingRecipes_CookingRecipesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97117886359A9A012F871A2 /* Pods-CookingRecipes-CookingRecipesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookingRecipes-CookingRecipesUITests.debug.xcconfig"; path = "Target Support Files/Pods-CookingRecipes-CookingRecipesUITests/Pods-CookingRecipes-CookingRecipesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABB4F3FF1F6BCA42D25135D8 /* Pods-CookingRecipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookingRecipes.debug.xcconfig"; path = "Target Support Files/Pods-CookingRecipes/Pods-CookingRecipes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		8504B8EE27089E060058CD28 /* CookingRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				853E861927294E4400B56679 /* Helpers */,
 				853E85E42729323E00B56679 /* 📱 Screens */,
 				853E85BB27281B1C00B56679 /* SupportingFiles */,
 				853E85A12728142A00B56679 /* Core */,
@@ -305,6 +308,14 @@
 				853E861127293B2300B56679 /* RecipeViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		853E861927294E4400B56679 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				853E861A27294E7700B56679 /* UIImageExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		EFE4EDCA2F6476F4B631E228 /* Pods */ = {
@@ -548,6 +559,7 @@
 				853E85B727281AFC00B56679 /* MainViewController.swift in Sources */,
 				853E86032729369200B56679 /* BaseRouter.swift in Sources */,
 				853E861227293B2300B56679 /* RecipeViewController.swift in Sources */,
+				853E861B27294E7700B56679 /* UIImageExtension.swift in Sources */,
 				8504B8F227089E060058CD28 /* SceneDelegate.swift in Sources */,
 				853E860B27293A5100B56679 /* FavoriteFoodViewController.swift in Sources */,
 				853E85AC2728175000B56679 /* AssemblyBuilder.swift in Sources */,
