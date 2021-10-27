@@ -13,8 +13,21 @@ protocol MainRouterProtocol: BaseRouter {
 
 class MainRouter: MainRouterProtocol {
     var tabBarController: UITabBarController?
-    var navigationController: UINavigationController?
+    var navigationController: UINavigationController
     var assemblyBuilder: AssemblyBuilderProtocol?
-    
-    
+    init(tabBarController: UITabBarController?,
+         navigationController: UINavigationController,
+         assemblyBuilder: AssemblyBuilderProtocol?) {
+        self.tabBarController = tabBarController
+        self.navigationController = navigationController
+        self.assemblyBuilder = assemblyBuilder
+    }
+    func initialViewController() {
+        guard let mainViewController = assemblyBuilder?.createMainController() else { return }
+        navigationController.viewControllers = [mainViewController]
+    }
+    func showRecipeController() {
+        guard let detailViewController = assemblyBuilder?.createRecipeController() else { return }
+        navigationController.pushViewController(detailViewController, animated: true)
+    }
 }

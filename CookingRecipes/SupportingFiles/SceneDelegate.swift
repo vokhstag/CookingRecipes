@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let authorizationVM = AssemblyBuilder.createAuthorizationModule()
-        let navigationController = UINavigationController(rootViewController: authorizationVM)
-        window?.rootViewController = navigationController
+        let tabBarRouter = TabBarRouter()
+        tabBarRouter.start()
+        window?.rootViewController = tabBarRouter.tabBarController
         window?.makeKeyAndVisible()
     }
 

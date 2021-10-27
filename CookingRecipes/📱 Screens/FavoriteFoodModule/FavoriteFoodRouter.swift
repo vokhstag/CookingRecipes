@@ -8,31 +8,25 @@
 import UIKit
 
 protocol FavoriteFoodRouterProtocol: BaseRouter {
-    
 }
 
 class FavoriteFoodRouter: FavoriteFoodRouterProtocol {
     var tabBarController: UITabBarController?
-    var navigationController: UINavigationController?
+    var navigationController: UINavigationController
     var assemblyBuilder: AssemblyBuilderProtocol?
-    
-    init(tabBarController: UITabBarController?, navigationController: UINavigationController?, assemblyBuilder: AssemblyBuilderProtocol?) {
+    init(tabBarController: UITabBarController?,
+         navigationController: UINavigationController,
+         assemblyBuilder: AssemblyBuilderProtocol?) {
         self.tabBarController = tabBarController
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
     }
-    
     func initialViewController() {
-        if let navigationController = navigationController {
-            guard let mainViewController = assemblyBuilder?.createMainModule(router: self) else { return }
-            navigationController.viewControllers = [mainViewController]
-        }
+        guard let mainViewController = assemblyBuilder?.createFavoriteFoodController() else { return }
+        navigationController.viewControllers = [mainViewController]
     }
-    
-    func showDetail() {
-        if let navigationController = navigationController {
-            guard let detailViewController = assemblyBuilder?.createDetailModule(comment: comment, router: self) else { return }
-            navigationController.pushViewController(detailViewController, animated: true)
-        }
+    func showRecipeController() {
+        guard let detailViewController = assemblyBuilder?.createRecipeController() else { return }
+        navigationController.pushViewController(detailViewController, animated: true)
     }
 }

@@ -7,14 +7,30 @@
 
 import UIKit
 
-protocol TabBarRouterProtocol: BaseRouter {
-    
+protocol TabBarRouterProtocol {
 }
 
 class TabBarRouter: TabBarRouterProtocol {
     var tabBarController: UITabBarController?
-    var navigationController: UINavigationController?
+//    var navigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
-    
-    
+    init() {
+        self.tabBarController = UITabBarController()
+//        self.navigationController = navigationController
+        self.assemblyBuilder = AssemblyBuilder()
+    }
+    func start() {
+        let mainNavigationController = UINavigationController()
+        let favoriteFoodNavigationController = UINavigationController()
+        let mainRouter = MainRouter(tabBarController: self.tabBarController,
+                                    navigationController: mainNavigationController,
+                                    assemblyBuilder: self.assemblyBuilder)
+        let favoriteFoodRouter = FavoriteFoodRouter(tabBarController: self.tabBarController,
+                                                    navigationController: favoriteFoodNavigationController,
+                                                    assemblyBuilder: self.assemblyBuilder)
+        mainRouter.initialViewController()
+        favoriteFoodRouter.initialViewController()
+        self.tabBarController?.setViewControllers(
+            [mainRouter.navigationController, favoriteFoodRouter.navigationController], animated: true)
+    }
 }
