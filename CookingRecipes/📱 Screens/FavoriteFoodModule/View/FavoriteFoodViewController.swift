@@ -11,6 +11,15 @@ class FavoriteFoodViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
 
+}
+
+// MARK: - Setup
+private extension FavoriteFoodViewController {
+    func setup() {
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+    }
 }

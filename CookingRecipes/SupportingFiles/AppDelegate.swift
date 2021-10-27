@@ -12,7 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setup()
         return true
     }
 
@@ -57,4 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+// MARK: - Setup 🛠
+private extension AppDelegate {
+    func setup() {
+        setupTabBar()
+    }
+    func setupTabBar() {
+        UITabBar.appearance().tintColor = .brandColor
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().unselectedItemTintColor = .gray
+        UITabBar.appearance().barTintColor = .brandWhite
+    }
 }

@@ -27,7 +27,7 @@ class MainRouter: MainRouterProtocol {
         guard let mainViewController = assemblyBuilder?.createMainController() else { return }
         mainViewController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage.TabBarIcons.home,
-                                                     selectedImage: UIImage.TabBarIcons.home)
+                                                     selectedImage: UIImage.TabBarIcons.homeSelected)
         navigationController.viewControllers = [mainViewController]
     }
     func showRecipeController() {

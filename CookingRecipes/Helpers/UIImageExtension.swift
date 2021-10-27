@@ -15,5 +15,11 @@ extension UIImage {
         static var bookmark: UIImage {
             return UIImage(named: "Bookmark")!
         }
+        static var homeSelected: UIImage {
+            return UIImage(named: "HomeSelected")!
+        }
+        static var bookmarkSelected: UIImage {
+            return UIImage(named: "BookmarkSelected")!
+        }
     }
 }

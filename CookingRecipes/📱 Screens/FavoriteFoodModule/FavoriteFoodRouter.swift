@@ -25,7 +25,7 @@ class FavoriteFoodRouter: FavoriteFoodRouterProtocol {
         guard let mainViewController = assemblyBuilder?.createFavoriteFoodController() else { return }
         mainViewController.tabBarItem = UITabBarItem(title: "Favorite",
                                                      image: UIImage.TabBarIcons.bookmark,
-                                                     selectedImage: UIImage.TabBarIcons.bookmark)
+                                                     selectedImage: UIImage.TabBarIcons.bookmarkSelected)
         navigationController.viewControllers = [mainViewController]
     }
     func showRecipeController() {
