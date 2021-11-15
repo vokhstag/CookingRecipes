@@ -17,11 +17,11 @@ protocol AssemblyBuilderProtocol {
 class AssemblyBuilder: AssemblyBuilderProtocol {
     private let networkService = NetworkService()
     func createMainController(router: MainRouterProtocol) -> UIViewController {
-        let view = MainViewController()
-        let presenter = MainPresenter(view: view,
-                                      networkService: networkService,
-                                      router: router)
-        view.presenter = presenter
+        let view = MainContainerViewController()
+       // let presenter = MainPresenter(view: view,
+//                                      networkService: networkService,
+//                                      router: router)
+     //  view.presenter = presenter
         return view
     }
     func createFavoriteFoodController() -> UIViewController {
