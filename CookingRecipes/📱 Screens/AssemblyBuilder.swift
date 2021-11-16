@@ -15,7 +15,7 @@ protocol AssemblyBuilderProtocol {
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
-    private let networkService = NetworkService()
+    private let networkService = CategoriesNetworkService()
     func createMainController(router: MainRouterProtocol) -> UIViewController {
         let view = MainContainerViewController()
        // let presenter = MainPresenter(view: view,

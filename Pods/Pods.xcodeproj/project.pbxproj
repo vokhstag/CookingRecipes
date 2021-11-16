@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -61,15 +62,15 @@
 		291299F44CF2CD89654DCC5B562F2A12 /* Pods-CookingRecipes-CookingRecipesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CookingRecipes-CookingRecipesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E1414CB6E6E32243B754A43758DB1B2 /* Pods-CookingRecipes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CookingRecipes-dummy.m"; sourceTree = "<group>"; };
 		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		3ED7D04F91496902280AEFA663242FE3 /* Pods_CookingRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CookingRecipes.framework; path = "Pods-CookingRecipes.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		445602401CD95F4030DF82F1486E3EC2 /* Pods_CookingRecipesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CookingRecipesTests.framework; path = "Pods-CookingRecipesTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ED7D04F91496902280AEFA663242FE3 /* Pods_CookingRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookingRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		445602401CD95F4030DF82F1486E3EC2 /* Pods_CookingRecipesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookingRecipesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F6CB3CEFE0EC3E859CCA3D3BC33387 /* Pods-CookingRecipesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CookingRecipesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA1B41EC5F2421CF710BB455F63543D /* Pods-CookingRecipesTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipesTests-Info.plist"; sourceTree = "<group>"; };
 		4BCA429CDF8C7BCEE9A149BA5AA3356A /* Pods-CookingRecipes-CookingRecipesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CookingRecipes-CookingRecipesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54DD2EF7BC9F221E6AEBFFCE225E99C3 /* Pods-CookingRecipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CookingRecipes.release.xcconfig"; sourceTree = "<group>"; };
 		587E5944ED7402CF5024D558F9684D2F /* Pods-CookingRecipesTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CookingRecipesTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		617A857BE6E5866B96A11F2BF59AFE03 /* Pods-CookingRecipes-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipes-acknowledgements.plist"; sourceTree = "<group>"; };
-		68AFEB10FADEE4FB57488FC87D71DA15 /* Pods_CookingRecipes_CookingRecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CookingRecipes_CookingRecipesUITests.framework; path = "Pods-CookingRecipes-CookingRecipesUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68AFEB10FADEE4FB57488FC87D71DA15 /* Pods_CookingRecipes_CookingRecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookingRecipes_CookingRecipesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C976AE2905CEA4DE59CD2F325EE1C7B /* Pods-CookingRecipes-CookingRecipesUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipes-CookingRecipesUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		74D87B52ADFA87CF3C49CE79512DB6E0 /* Pods-CookingRecipesTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CookingRecipesTests.modulemap"; sourceTree = "<group>"; };
@@ -79,7 +80,7 @@
 		911D842AAF4CA29336545572A6D0055F /* Pods-CookingRecipes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CookingRecipes.modulemap"; sourceTree = "<group>"; };
 		94293726178038D05BFCF44093C51C44 /* Pods-CookingRecipesTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipesTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		96480B4AE1F4DFEE9BB21F2B4BD31D53 /* Pods-CookingRecipes-CookingRecipesUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipes-CookingRecipesUITests-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E167D26C50BA776FD23F4751989E961 /* Pods-CookingRecipes-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CookingRecipes-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AEF2D7F017E94EC38499FD6AA37234E6 /* Pods-CookingRecipes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CookingRecipes-Info.plist"; sourceTree = "<group>"; };
 		B8C27CE966272252FCD27D825D6B3CDA /* Pods-CookingRecipesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CookingRecipesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,7 +235,6 @@
 			children = (
 				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -332,7 +332,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -750,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -767,7 +767,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -13,3 +13,7 @@ struct Category: Decodable {
     let strCategoryThumb: String?
     let strCategoryDescription: String?
 }
+
+struct Categories: Decodable {
+    let categories: [Category]
+}

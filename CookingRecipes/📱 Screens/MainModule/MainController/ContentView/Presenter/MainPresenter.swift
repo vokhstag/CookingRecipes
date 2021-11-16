@@ -13,30 +13,30 @@ protocol MainViewProtocol: class {
 }
 
 protocol MainViewPresenterProtocol: class {
-    init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: MainRouterProtocol)
+    init(view: MainViewProtocol, networkService: RecipesNetworkServiceProtocol, router: MainRouterProtocol)
     var dishes: [Dish]? {get set}
-    func getListOfDishes()
+    func getListOfDishes(url: URL)
     func goToDetailRecipe(dish: Dish)
 }
 
 class MainPresenter: MainViewPresenterProtocol {
     weak var view: MainViewProtocol?
-    let networkService: NetworkServiceProtocol
+    let networkService: RecipesNetworkServiceProtocol
     var router: MainRouterProtocol?
     var dishes: [Dish]?
-    required init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: MainRouterProtocol) {
+    required init(view: MainViewProtocol, networkService: RecipesNetworkServiceProtocol, router: MainRouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.router = router
-        getListOfDishes()
+      //  getListOfDishes(url: )
     }
-    func getListOfDishes() {
-        networkService.getDishes { [weak self] result in
+    func getListOfDishes(url: URL) {
+        networkService.getDishes(url: url) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let dishes):
-                    self.dishes = dishes?.meals
+                    self.dishes = dishes.meals
                     self.view?.succes()
                 case .failure(let error):
                     self.view?.failure(error: error)
