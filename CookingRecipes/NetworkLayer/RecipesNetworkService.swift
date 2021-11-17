@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias RecipesResponse = Result<Meals, Error>
+typealias RecipesResponse = Result<Meals, NetworkServiceError>
 
 protocol RecipesNetworkServiceProtocol {
     func getDishes(url: URL, completion: @escaping (RecipesResponse) -> Void)

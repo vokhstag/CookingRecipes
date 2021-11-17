@@ -18,10 +18,8 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     private let networkService = CategoriesNetworkService()
     func createMainController(router: MainRouterProtocol) -> UIViewController {
         let view = MainContainerViewController()
-       // let presenter = MainPresenter(view: view,
-//                                      networkService: networkService,
-//                                      router: router)
-     //  view.presenter = presenter
+        let presenter = MainContainerPresenter(view: view, network: networkService)
+        view.presenter = presenter
         return view
     }
     func createFavoriteFoodController() -> UIViewController {

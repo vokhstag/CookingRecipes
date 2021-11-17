@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainViewProtocol: class {
     func succes()
-    func failure(error: Error)
+    func failure(errorDescription: String)
 }
 
 protocol MainViewPresenterProtocol: class {
@@ -39,7 +39,7 @@ class MainPresenter: MainViewPresenterProtocol {
                     self.dishes = dishes.meals
                     self.view?.succes()
                 case .failure(let error):
-                    self.view?.failure(error: error)
+                    self.view?.failure(errorDescription: error.localizedDescription)
                 }
             }
         }

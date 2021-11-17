@@ -8,7 +8,7 @@
 import Foundation
 
 struct Category: Decodable {
-    let idCategory: Int
+    let idCategory: String
     let strCategory: String
     let strCategoryThumb: String?
     let strCategoryDescription: String?

@@ -50,8 +50,8 @@ extension MainViewController: MainViewProtocol {
     func succes() {
         print(presenter.dishes?.first ?? "NIL")
     }
-    func failure(error: Error) {
-        print(error.localizedDescription)
+    func failure(errorDescription: String) {
+        print(errorDescription)
     }
 }
 

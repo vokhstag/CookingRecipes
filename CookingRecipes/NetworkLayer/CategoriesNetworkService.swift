@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias CategoriesResponse = Result<[Category], Error>
+typealias CategoriesResponse = Result<[Category], NetworkServiceError>
 
 protocol CategoriesNetworkServiceProtocol {
     func getCategories(url: URL, completion: @escaping (CategoriesResponse) -> Void)
@@ -20,7 +20,7 @@ class CategoriesNetworkService: BaseNetworkService, CategoriesNetworkServiceProt
                 let data = try self.httpResponse(data: rawData, response: response)
                 let response = try self.decoder.decode(Categories.self, from: data)
                 completion(.success(response.categories))
-            } catch(let error) {
+            } catch {
                 completion(.failure((error as? NetworkServiceError) ?? .decode))
             }
         }

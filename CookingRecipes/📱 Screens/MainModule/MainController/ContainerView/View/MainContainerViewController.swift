@@ -10,7 +10,8 @@ import UIKit
 class MainContainerViewController: UIViewController {
     // MARK: - Private properties
     private let contentViewConrtoller = MainViewController()
-  //  private let presenter = MainContainerPresenter()
+    // MARK: - DI
+    var presenter: MainContainerPresenterType!
     // MARK: - UI
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -39,6 +40,7 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        presenter.getCategories()
     }
 
 }
@@ -46,7 +48,7 @@ class MainContainerViewController: UIViewController {
 // MARK: - UICollectionView DataSource
 extension MainContainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        return presenter.categories.count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,6 +72,22 @@ extension MainContainerViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = CGSize(width: 100, height: 40)
         return size
+    }
+}
+
+// MARK: - MainContainerViewProtocol
+extension MainContainerViewController: MainContainerViewProtocol {
+    func succes() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func failure(errorDescription: String) {
+        DispatchQueue.main.async {
+            // Показать алерт
+            print(errorDescription)
+        }
     }
 }
 
