@@ -61,6 +61,7 @@ private extension CategoryCollectionViewCell {
             imageContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
             imageContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             imageContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
+            imageContentView.heightAnchor.constraint(equalToConstant: 24),
             imageContentView.widthAnchor.constraint(equalTo: imageContentView.heightAnchor)
         ])
         NSLayoutConstraint.activate([
@@ -72,8 +73,7 @@ private extension CategoryCollectionViewCell {
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: self.imageContentView.trailingAnchor, constant: 8),
             nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-          //  label.topAnchor.constraint(equalTo: self.topAnchor, constant: 3)
+            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 }

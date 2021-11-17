@@ -8,17 +8,13 @@
 import UIKit
 
 extension UIImageView {
-    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    
     func setImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
+        getData(from: url) { data, _, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async() { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 self?.image = UIImage(data: data)
             }
         }

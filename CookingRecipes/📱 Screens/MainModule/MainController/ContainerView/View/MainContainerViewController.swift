@@ -18,6 +18,7 @@ class MainContainerViewController: UIViewController {
         collectionViewLayout.scrollDirection = .horizontal
         let collectionView = BaseCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.collectionViewLayout = collectionViewLayout
+        collectionView.contentInset.left = 12
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
@@ -105,7 +106,7 @@ private extension MainContainerViewController {
     func setupHeaderLabel() {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            headerLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            headerLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12),
             headerLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
@@ -116,6 +117,8 @@ private extension MainContainerViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5)
         ])
+        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
+            = UICollectionViewFlowLayout.automaticSize
     }
     func addContentController(_ child: UIViewController) {
         addChild(child)
