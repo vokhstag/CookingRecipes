@@ -18,7 +18,7 @@ class MainContainerViewController: UIViewController {
         collectionViewLayout.scrollDirection = .horizontal
         let collectionView = BaseCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.contentInset.left = 12
+        collectionView.contentInset.left = 24
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
@@ -27,6 +27,30 @@ class MainContainerViewController: UIViewController {
                                 forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+    lazy var searchContentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var searchTextField: UITextField = {
+        let searchTextField = UITextField()
+        searchTextField.placeholder = "Find recipe"
+        self.searchContentView.addSubview(searchTextField)
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        return searchTextField
+    }()
+    lazy var searchButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .brandColor
+        button.setImage(UIImage.Icons.loupe, for: .normal)
+        self.searchContentView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     lazy var headerLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +67,7 @@ class MainContainerViewController: UIViewController {
         setup()
         collectionView.startLoading()
         presenter.getCategories()
+        print(collectionView.bounds.height)
     }
 }
 
@@ -70,16 +95,6 @@ extension MainContainerViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - UICollectionView DelegateFlowLayout
-extension MainContainerViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let size = CGSize(width: 120, height: 36)
-//        return size
-//    }
-}
-
 // MARK: - MainContainerViewProtocol
 extension MainContainerViewController: MainContainerViewProtocol {
     func succes() {
@@ -101,6 +116,7 @@ private extension MainContainerViewController {
         addContentController(contentViewConrtoller)
         setupHeaderLabel()
         setupCollectionView()
+        setupSearchTextField()
         self.view.backgroundColor = #colorLiteral(red: 0.8342786815, green: 0.8990528682, blue: 0.9208850599, alpha: 1)
     }
     func setupHeaderLabel() {
@@ -110,12 +126,33 @@ private extension MainContainerViewController {
             headerLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
+    func setupSearchTextField() {
+        NSLayoutConstraint.activate([
+            searchContentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
+            searchContentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -24),
+            searchContentView.topAnchor.constraint(equalTo: self.headerLabel.bottomAnchor, constant: 8),
+            searchContentView.bottomAnchor.constraint(equalTo: self.collectionView.topAnchor, constant: -8),
+            searchContentView.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        NSLayoutConstraint.activate([
+            searchTextField.leadingAnchor.constraint(equalTo: self.searchContentView.leadingAnchor, constant: 10),
+            searchTextField.topAnchor.constraint(equalTo: self.searchContentView.topAnchor),
+            searchTextField.bottomAnchor.constraint(equalTo: self.searchContentView.bottomAnchor),
+            searchTextField.trailingAnchor.constraint(equalTo: self.searchContentView.trailingAnchor, constant: -40)
+        ])
+        NSLayoutConstraint.activate([
+            searchButton.topAnchor.constraint(equalTo: self.searchContentView.topAnchor),
+            searchButton.bottomAnchor.constraint(equalTo: self.searchContentView.bottomAnchor),
+            searchButton.trailingAnchor.constraint(equalTo: self.searchContentView.trailingAnchor),
+            searchButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+    }
     func setupCollectionView() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5)
+            collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5),
+            collectionView.heightAnchor.constraint(equalToConstant: 55)
         ])
         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
             = UICollectionViewFlowLayout.automaticSize
@@ -129,7 +166,7 @@ private extension MainContainerViewController {
     func setupChildView(view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 120),
+            view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 200),
             view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
