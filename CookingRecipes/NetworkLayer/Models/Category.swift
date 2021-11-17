@@ -8,10 +8,16 @@
 import Foundation
 
 struct Category: Decodable {
-    let idCategory: String
-    let strCategory: String
-    let strCategoryThumb: String?
-    let strCategoryDescription: String?
+    let id: String
+    let name: String
+    let imageURL: String?
+    let description: String?
+    private enum CodingKeys: String, CodingKey {
+        case id = "idCategory"
+        case name = "strCategory"
+        case imageURL = "strCategoryThumb"
+        case description = "strCategoryDescription"
+    }
 }
 
 struct Categories: Decodable {

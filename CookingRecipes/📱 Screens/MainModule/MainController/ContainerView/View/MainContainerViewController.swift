@@ -13,10 +13,10 @@ class MainContainerViewController: UIViewController {
     // MARK: - DI
     var presenter: MainContainerPresenterType!
     // MARK: - UI
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: BaseCollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = BaseCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.collectionViewLayout = collectionViewLayout
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -40,9 +40,9 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        collectionView.startLoading()
         presenter.getCategories()
     }
-
 }
 
 // MARK: - UICollectionView DataSource
@@ -54,7 +54,11 @@ extension MainContainerViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier,
                                                       for: indexPath)
-        cell.backgroundColor = .blue
+        guard let categoryCell = cell as? CategoryCollectionViewCell else { return cell }
+        let data = presenter.categories[indexPath.row]
+        if let imageURL = data.imageURL {
+            categoryCell.configure(name: data.name, imageURL: URL(string: imageURL))
+        }
         return cell
     }
 }
@@ -67,26 +71,25 @@ extension MainContainerViewController: UICollectionViewDelegate {
 
 // MARK: - UICollectionView DelegateFlowLayout
 extension MainContainerViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: 100, height: 40)
-        return size
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let size = CGSize(width: 120, height: 36)
+//        return size
+//    }
 }
 
 // MARK: - MainContainerViewProtocol
 extension MainContainerViewController: MainContainerViewProtocol {
     func succes() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.stopLoading()
+            self?.collectionView.reloadData()
         }
     }
-    
     func failure(errorDescription: String) {
-        DispatchQueue.main.async {
-            // Показать алерт
-            print(errorDescription)
+        DispatchQueue.main.async { [weak self] in
+            self?.showErrorAlert(message: errorDescription)
         }
     }
 }
@@ -128,5 +131,15 @@ private extension MainContainerViewController {
             view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+}
+
+// MARK: - Private methods
+private extension MainContainerViewController {
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
 }

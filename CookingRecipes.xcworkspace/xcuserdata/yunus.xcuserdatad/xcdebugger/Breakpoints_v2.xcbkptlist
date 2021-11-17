@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1FDC7940-7D9F-4F30-ADAF-2957C70FC447"
-            shouldBeEnabled = "Yes"
+            uuid = "113FAB53-4917-421D-AB3C-8EF762474E7F"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CookingRecipes/&#x1f4f1; Screens/MainModule/MainController/ContainerView/View/MainContainerViewController.swift"
+            filePath = "CookingRecipes/Core/BaseCollectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "failure(errorDescription:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "setupLoadingView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

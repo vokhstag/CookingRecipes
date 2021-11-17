@@ -11,6 +11,7 @@ typealias CategoriesResponse = Result<[Category], NetworkServiceError>
 
 protocol CategoriesNetworkServiceProtocol {
     func getCategories(url: URL, completion: @escaping (CategoriesResponse) -> Void)
+    func getImage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
 class CategoriesNetworkService: BaseNetworkService, CategoriesNetworkServiceProtocol {
@@ -26,5 +27,9 @@ class CategoriesNetworkService: BaseNetworkService, CategoriesNetworkServiceProt
         }
 
         session.dataTask(with: url, completionHandler: handler).resume()
+    }
+    
+    func getImage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        session.dataTask(with: url, completionHandler: completion).resume()
     }
 }
