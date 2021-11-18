@@ -52,16 +52,31 @@ class MainContainerViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    lazy var headerLabel: UILabel = {
+    lazy var readyToCookLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(24)
         label.numberOfLines = 1
-        label.text = "Категории"
+        label.text = "Ready to cook?"
         label.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(label)
         return label
     }()
-
+    lazy var helloLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.text = "Hello" // TODO: - Нужно добавить имя из CoreData
+        self.view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.Icons.userAvatar
+        self.view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -114,23 +129,38 @@ extension MainContainerViewController: MainContainerViewProtocol {
 private extension MainContainerViewController {
     func setup() {
         addContentController(contentViewConrtoller)
-        setupHeaderLabel()
-        setupCollectionView()
-        setupSearchTextField()
+        setupSubviews()
+        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
+            = UICollectionViewFlowLayout.automaticSize
         self.view.backgroundColor = #colorLiteral(red: 0.8342786815, green: 0.8990528682, blue: 0.9208850599, alpha: 1)
     }
-    func setupHeaderLabel() {
+    func setupSubviews() {
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            headerLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12),
-            headerLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            avatarImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 35),
+            avatarImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -24),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 36),
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor)
         ])
-    }
-    func setupSearchTextField() {
+        NSLayoutConstraint.activate([
+            helloLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            helloLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
+            helloLabel.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 10)
+        ])
+        NSLayoutConstraint.activate([
+            readyToCookLabel.topAnchor.constraint(equalTo: self.helloLabel.bottomAnchor),
+            readyToCookLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
+            readyToCookLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5),
+            collectionView.heightAnchor.constraint(equalToConstant: 55)
+        ])
         NSLayoutConstraint.activate([
             searchContentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
             searchContentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -24),
-            searchContentView.topAnchor.constraint(equalTo: self.headerLabel.bottomAnchor, constant: 8),
+            searchContentView.topAnchor.constraint(equalTo: self.readyToCookLabel.bottomAnchor, constant: 8),
             searchContentView.bottomAnchor.constraint(equalTo: self.collectionView.topAnchor, constant: -8),
             searchContentView.heightAnchor.constraint(equalToConstant: 44)
         ])
@@ -146,16 +176,6 @@ private extension MainContainerViewController {
             searchButton.trailingAnchor.constraint(equalTo: self.searchContentView.trailingAnchor),
             searchButton.widthAnchor.constraint(equalToConstant: 40)
         ])
-    }
-    func setupCollectionView() {
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5),
-            collectionView.heightAnchor.constraint(equalToConstant: 55)
-        ])
-        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
-            = UICollectionViewFlowLayout.automaticSize
     }
     func addContentController(_ child: UIViewController) {
         addChild(child)

@@ -12,6 +12,9 @@ extension UIImage {
         static var loupe: UIImage {
             return UIImage(named: "loupe")!
         }
+        static var userAvatar: UIImage {
+            return UIImage(named: "userAvatar")!
+        }
     }
     enum TabBarIcons {
         static var home: UIImage {
