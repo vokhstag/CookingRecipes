@@ -30,6 +30,8 @@ class DishCell: UICollectionViewCell {
     }()
     lazy var dishNameLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         subContentView.addSubview(label)
         return label
@@ -37,6 +39,8 @@ class DishCell: UICollectionViewCell {
     lazy var dishCountryLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         subContentView.addSubview(label)
         return label
@@ -57,6 +61,7 @@ class DishCell: UICollectionViewCell {
     }
     func configure(name: String, country: String, imageURL: URL?) {
         dishNameLabel.text = name
+        dishCountryLabel.text = country
         if let url = imageURL {
             imageView.setImage(from: url)
             imageView.clipsToBounds = true
@@ -86,6 +91,12 @@ private extension DishCell {
             dishNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             dishNameLabel.leadingAnchor.constraint(equalTo: subContentView.leadingAnchor, constant: 6),
             dishNameLabel.trailingAnchor.constraint(equalTo: subContentView.trailingAnchor, constant: -6)
+        ])
+        NSLayoutConstraint.activate([
+            dishCountryLabel.topAnchor.constraint(equalTo: dishNameLabel.bottomAnchor, constant: 1),
+            dishCountryLabel.leadingAnchor.constraint(equalTo: subContentView.leadingAnchor, constant: 6),
+            dishCountryLabel.trailingAnchor.constraint(equalTo: subContentView.trailingAnchor, constant: -6),
+            dishCountryLabel.bottomAnchor.constraint(lessThanOrEqualTo: subContentView.bottomAnchor, constant: -10)
         ])
     }
 }

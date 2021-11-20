@@ -99,7 +99,6 @@ extension MainContainerViewController: UICollectionViewDataSource {
         let data = presenter.categories[indexPath.row]
         if data.name == presenter.selectedCategoryName {
             categoryCell.configureForSelectionState(name: data.name, imageURL: URL(string: data.imageURL ?? ""))
-            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             selectedIndexPath = indexPath
         } else {
             categoryCell.configure(name: data.name, imageURL: URL(string: data.imageURL ?? ""))

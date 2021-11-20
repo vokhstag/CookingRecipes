@@ -37,7 +37,7 @@ struct Dish: Decodable {
     let measure8: String?
     let measure9: String?
     let measure10: String?
-    
+    // MARK: - CodingKeys
     private enum CodingKeys: String, CodingKey {
         case id = "idMeal"
         case name = "strMeal"
