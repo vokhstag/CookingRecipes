@@ -8,7 +8,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    // MARK: DI
     var presenter: MainViewPresenterProtocol!
+    // MARK: - UI
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
@@ -39,12 +41,14 @@ class MainViewController: UIViewController {
 // MARK: - UICollectionView DataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
+        presenter.dishes.count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.identifier, for: indexPath)
         guard let dishCell = cell as? DishCell else { return cell }
+        let data = presenter.dishes[indexPath.row]
+        dishCell.configure(name: "", country: "", imageURL: URL(string: data.strMealThumb ?? ""))
         return dishCell
     }
 }
@@ -65,10 +69,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: MainViewProtocol {
     func succes() {
-        print(presenter.dishes?.first ?? "NIL")
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     func failure(errorDescription: String) {
-        print(errorDescription)
+        DispatchQueue.main.async { [weak self] in
+            //
+        }
     }
 }
 

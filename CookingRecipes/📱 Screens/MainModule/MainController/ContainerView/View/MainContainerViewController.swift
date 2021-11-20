@@ -9,9 +9,10 @@ import UIKit
 
 class MainContainerViewController: UIViewController {
     // MARK: - Private properties
-    private let contentViewConrtoller = MainViewController()
+    private var selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0)
     // MARK: - DI
     var presenter: MainContainerPresenterType!
+    var contentViewController: UIViewController!
     // MARK: - UI
     lazy var collectionView: BaseCollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -97,8 +98,12 @@ extension MainContainerViewController: UICollectionViewDataSource {
                                                       for: indexPath)
         guard let categoryCell = cell as? CategoryCollectionViewCell else { return cell }
         let data = presenter.categories[indexPath.row]
-        if let imageURL = data.imageURL {
-            categoryCell.configure(name: data.name, imageURL: URL(string: imageURL))
+        if data.name == presenter.selectedCategoryName {
+            categoryCell.configureForSelectionState(name: data.name, imageURL: URL(string: data.imageURL ?? ""))
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+            selectedIndexPath = indexPath
+        } else {
+            categoryCell.configure(name: data.name, imageURL: URL(string: data.imageURL ?? ""))
         }
         return cell
     }
@@ -107,6 +112,25 @@ extension MainContainerViewController: UICollectionViewDataSource {
 // MARK: - UICollectionView Delegate
 extension MainContainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = presenter.categories[indexPath.row]
+        presenter.selectedCategoryName = selectedCategory.name
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as?
+                CategoryCollectionViewCell else { return }
+        selectedCell.selectOrDeselect(isSelected: true)
+        if let oldCell = (collectionView.cellForItem(at: selectedIndexPath) as?
+                            CategoryCollectionViewCell) {
+            oldCell.selectOrDeselect(isSelected: false)
+        }
+        self.selectedIndexPath = indexPath
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if indexPath != self.selectedIndexPath {
+            if cell.contentView.backgroundColor != .white {
+                cell.contentView.backgroundColor = .white
+            }
+        }
     }
 }
 
@@ -128,7 +152,7 @@ extension MainContainerViewController: MainContainerViewProtocol {
 // MARK: - Setup
 private extension MainContainerViewController {
     func setup() {
-        addContentController(contentViewConrtoller)
+        addContentController(contentViewController)
         setupSubviews()
         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
             = UICollectionViewFlowLayout.automaticSize
@@ -154,7 +178,7 @@ private extension MainContainerViewController {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: contentViewConrtoller.view.topAnchor, constant: 5),
+            collectionView.bottomAnchor.constraint(equalTo: contentViewController.view.topAnchor, constant: 5),
             collectionView.heightAnchor.constraint(equalToConstant: 55)
         ])
         NSLayoutConstraint.activate([

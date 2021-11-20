@@ -12,17 +12,34 @@ protocol MainContainerViewProtocol: class {
     func failure(errorDescription: String)
 }
 
+protocol UpdateContentProtocol: class {
+    func update(with category: String)
+}
+
 protocol MainContainerPresenterType {
+    var selectedCategoryName: String { get set }
     var categories: [Category] { get }
     func getCategories()
 }
 
 class MainContainerPresenter: MainContainerPresenterType {
+    var selectedCategoryName: String {
+        get {
+            return self.defaults.string(forKey: Keys.kSelectedCategory) ?? ""
+        }
+        set {
+            defaults.setValue(newValue, forKey: Keys.kSelectedCategory)
+            self.delegate?.update(with: newValue)
+        }
+    }
     var categories: [Category] = []
+    // MARK: DI
+    weak var delegate: UpdateContentProtocol?
     // MARK: - Private Properties
     private weak var view: MainContainerViewProtocol?
     private var network: CategoriesNetworkServiceProtocol
     private let endpoint = Endpoints.categories
+    private let defaults = UserDefaults.standard
     init(view: MainContainerViewProtocol?, network: CategoriesNetworkServiceProtocol) {
         self.view = view
         self.network = network
@@ -37,6 +54,9 @@ class MainContainerPresenter: MainContainerPresenterType {
             switch result {
             case .success(let categories):
                 self.categories = categories
+                let name = self.defaults.string(forKey: Keys.kSelectedCategory) ?? categories[0].name
+                self.selectedCategoryName = name
+                self.delegate?.update(with: name)
                 self.view?.succes()
             case .failure(let error):
                 self.view?.failure(errorDescription: error.message)

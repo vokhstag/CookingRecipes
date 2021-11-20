@@ -42,9 +42,24 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         setup()
     }
     func configure(name: String, imageURL: URL?) {
+        self.contentView.backgroundColor = .white
         nameLabel.text = name
         if let url = imageURL {
             categoryImageView.setImage(from: url)
+        }
+    }
+    func configureForSelectionState(name: String, imageURL: URL?) {
+        self.contentView.backgroundColor = .brandColor
+        nameLabel.text = name
+        if let url = imageURL {
+            categoryImageView.setImage(from: url)
+        }
+    }
+    func selectOrDeselect(isSelected: Bool) {
+        if isSelected {
+            contentView.backgroundColor = .brandColor
+        } else {
+            contentView.backgroundColor = .white
         }
     }
 }
@@ -52,7 +67,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 // MARK: - Setup
 private extension CategoryCollectionViewCell {
     func setup() {
-        self.contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 5
         setupSubviews()
     }

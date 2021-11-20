@@ -55,6 +55,13 @@ class DishCell: UICollectionViewCell {
         super.layoutSubviews()
         imageView.layer.cornerRadius = imageView.frame.width/2
     }
+    func configure(name: String, country: String, imageURL: URL?) {
+        if let url = imageURL {
+            imageView.setImage(from: url)
+           // imageView.layer.cornerRadius = imageView.frame.width/2
+            imageView.clipsToBounds = true
+        }
+    }
 }
 // MARK: - Setup
 private extension DishCell {

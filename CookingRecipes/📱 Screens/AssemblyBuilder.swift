@@ -15,11 +15,19 @@ protocol AssemblyBuilderProtocol {
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
-    private let networkService = CategoriesNetworkService()
+    private let categoriesnetworkService = CategoriesNetworkService()
+    private let recipesNetworkService = RecipesNetworkService()
     func createMainController(router: MainRouterProtocol) -> UIViewController {
+        let contentViewController = MainViewController()
+        let contentPresenter = MainPresenter(view: contentViewController,
+                                             networkService: recipesNetworkService,
+                                             router: router)
+        contentViewController.presenter = contentPresenter
         let view = MainContainerViewController()
-        let presenter = MainContainerPresenter(view: view, network: networkService)
+        let presenter = MainContainerPresenter(view: view, network: categoriesnetworkService)
+        presenter.delegate = contentPresenter
         view.presenter = presenter
+        view.contentViewController = contentViewController
         return view
     }
     func createFavoriteFoodController() -> UIViewController {
