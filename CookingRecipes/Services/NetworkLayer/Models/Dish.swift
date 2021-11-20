@@ -8,29 +8,67 @@
 import Foundation
 
 struct Dish: Decodable {
-    let idMeal: String
-    let strMeal: String?
-    let strDrinkAlternate: String?
-    let strCategory: String?
-    let strArea: String?
-    let strInstructions: String?
-    let strMealThumb: String?
-    let strTags: String?
-    let strYoutube: String?
-    let strIngredient1: String?
-    let strIngredient2: String?
-    let strIngredient3: String?
-    let strIngredient4: String?
-    let strIngredient5: String?
-    let strIngredient6: String?
-    let strIngredient7: String?
-    let strMeasure1: String?
-    let strMeasure2: String?
-    let strMeasure3: String?
-    let strMeasure4: String?
-    let strMeasure5: String?
-    let strMeasure6: String?
-    let strMeasure7: String?
+    let id: String
+    let name: String?
+    let drinkAlternate: String?
+    let category: String?
+    let country: String?
+    let instructions: String?
+    let imageUrl: String?
+    let tags: String?
+    let youtube: String?
+    let ingredient1: String?
+    let ingredient2: String?
+    let ingredient3: String?
+    let ingredient4: String?
+    let ingredient5: String?
+    let ingredient6: String?
+    let ingredient7: String?
+    let ingredient8: String?
+    let ingredient9: String?
+    let ingredient10: String?
+    let measure1: String?
+    let measure2: String?
+    let measure3: String?
+    let measure4: String?
+    let measure5: String?
+    let measure6: String?
+    let measure7: String?
+    let measure8: String?
+    let measure9: String?
+    let measure10: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "idMeal"
+        case name = "strMeal"
+        case drinkAlternate = "strDrinkAlternate"
+        case category = "strCategory"
+        case country = "strArea"
+        case instructions = "strInstructions"
+        case imageUrl = "strMealThumb"
+        case tags = "strTags"
+        case youtube = "strYoutube"
+        case ingredient1 = "strIngredient1"
+        case ingredient2 = "strIngredient2"
+        case ingredient3 = "strIngredient3"
+        case ingredient4 = "strIngredient4"
+        case ingredient5 = "strIngredient5"
+        case ingredient6 = "strIngredient6"
+        case ingredient7 = "strIngredient7"
+        case ingredient8 = "strIngredient8"
+        case ingredient9 = "strIngredient9"
+        case ingredient10 = "strIngredient10"
+        case measure1 = "strMeasure1"
+        case measure2 = "strMeasure2"
+        case measure3 = "strMeasure3"
+        case measure4 = "strMeasure4"
+        case measure5 = "strMeasure5"
+        case measure6 = "strMeasure6"
+        case measure7 = "strMeasure7"
+        case measure8 = "strMeasure8"
+        case measure9 = "strMeasure9"
+        case measure10 = "strMeasure10"
+    }
 }
 
 struct Meals: Decodable {

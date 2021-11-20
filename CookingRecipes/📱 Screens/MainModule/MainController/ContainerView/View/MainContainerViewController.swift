@@ -83,7 +83,6 @@ class MainContainerViewController: UIViewController {
         setup()
         collectionView.startLoading()
         presenter.getCategories()
-        print(collectionView.bounds.height)
     }
 }
 

@@ -56,9 +56,9 @@ class DishCell: UICollectionViewCell {
         imageView.layer.cornerRadius = imageView.frame.width/2
     }
     func configure(name: String, country: String, imageURL: URL?) {
+        dishNameLabel.text = name
         if let url = imageURL {
             imageView.setImage(from: url)
-           // imageView.layer.cornerRadius = imageView.frame.width/2
             imageView.clipsToBounds = true
         }
     }
@@ -81,6 +81,11 @@ private extension DishCell {
             imageView.centerXAnchor.constraint(equalTo: subContentView.centerXAnchor),
             imageView.widthAnchor.constraint(equalTo: subContentView.widthAnchor, multiplier: 0.6),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            dishNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            dishNameLabel.leadingAnchor.constraint(equalTo: subContentView.leadingAnchor, constant: 6),
+            dishNameLabel.trailingAnchor.constraint(equalTo: subContentView.trailingAnchor, constant: -6)
         ])
     }
 }
