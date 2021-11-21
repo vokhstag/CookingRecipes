@@ -8,7 +8,10 @@
 import UIKit
 
 class IngredientCell: UITableViewCell {
-
+    static var identifier: String {
+        return String(describing: self)
+    }
+    // MARK: - UI
     lazy var ingredientImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,10 +40,12 @@ class IngredientCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
-    func configure(imageURL: URL, name: String, measure: String?) {
+    func configure(imageURL: URL?, name: String, measure: String?) {
         nameLabel.text = name
         measureLabel.text = measure
-        ingredientImageView.setImage(from: imageURL)
+        if let url = imageURL {
+            ingredientImageView.setImage(from: url)
+        }
     }
 }
 // MARK: - Setup

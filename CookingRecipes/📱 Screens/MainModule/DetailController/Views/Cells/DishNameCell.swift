@@ -8,6 +8,9 @@
 import UIKit
 
 class DishNameCell: UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
     // MARK: - UI
     lazy var dishImageView: UIImageView = {
         let imageView = UIImageView()
@@ -38,6 +41,13 @@ class DishNameCell: UITableViewCell {
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
+    }
+    func configure(url: URL?, name: String?, country: String?) {
+        dishNameLabel.text = name
+        dishCountryLabel.text = country
+        if let url = url {
+            dishImageView.setImage(from: url)
+        }
     }
 }
 // MARK: - Setup

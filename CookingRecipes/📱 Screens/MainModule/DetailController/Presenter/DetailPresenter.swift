@@ -8,10 +8,13 @@
 import Foundation
 
 protocol DetailPresenterType {
-    var categories: [Dish] { get }
+    var dish: Dish { get }
 }
 
 class DetailPresenter: DetailPresenterType {
-    var categories: [Dish] = []
+    var dish: Dish
 
+    init(dish: Dish) {
+        self.dish = dish
+    }
 }

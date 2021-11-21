@@ -8,6 +8,9 @@
 import UIKit
 
 class InstructionCell: UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
     // MARK: - UI
     lazy var instructionLabel: UILabel = {
         let label = UILabel()
