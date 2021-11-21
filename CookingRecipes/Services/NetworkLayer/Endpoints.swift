@@ -9,6 +9,7 @@ import Foundation
 
 enum Endpoints {
     case recipes(category: String)
+    case searchRecipy(seachText: String)
     case categories
     // MARK: - Properties
     var url: URL? {
@@ -26,6 +27,8 @@ private extension Endpoints {
             return "/api/json/v1/1/filter.php?c=\(category)"
         case .categories:
             return "/api/json/v1/1/categories.php"
+        case .searchRecipy(let searchText):
+            return "/api/json/v1/1/search.php?s=\(searchText)"
         }
     }
 }

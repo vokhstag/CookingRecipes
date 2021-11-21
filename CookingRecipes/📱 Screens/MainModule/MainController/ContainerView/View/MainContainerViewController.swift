@@ -49,6 +49,7 @@ class MainContainerViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .brandColor
         button.setImage(UIImage.Icons.loupe, for: .normal)
+        button.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
         self.searchContentView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -223,5 +224,10 @@ private extension MainContainerViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true)
+    }
+    @objc func searchTapped() {
+        if let text = searchTextField.text, text != "" {
+            presenter.searchByName(text: text)
+        }
     }
 }

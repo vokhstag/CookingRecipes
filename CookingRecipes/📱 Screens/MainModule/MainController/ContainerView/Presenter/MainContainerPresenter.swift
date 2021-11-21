@@ -14,12 +14,14 @@ protocol MainContainerViewProtocol: class {
 
 protocol UpdateContentProtocol: class {
     func update(with category: String)
+    func update(withSearchText text: String)
 }
 
 protocol MainContainerPresenterType {
     var selectedCategoryName: String { get set }
     var categories: [Category] { get }
     func getCategories()
+    func searchByName(text: String)
 }
 
 class MainContainerPresenter: MainContainerPresenterType {
@@ -62,5 +64,8 @@ class MainContainerPresenter: MainContainerPresenterType {
                 self.view?.failure(errorDescription: error.message)
             }
         }
+    }
+    func searchByName(text: String) {
+        self.delegate?.update(withSearchText: text)
     }
 }

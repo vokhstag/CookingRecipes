@@ -11,12 +11,12 @@ class MainViewController: UIViewController {
     // MARK: DI
     var presenter: MainViewPresenterProtocol!
     // MARK: - UI
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: BaseCollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
         collectionViewLayout.minimumInteritemSpacing = 16
         collectionViewLayout.minimumLineSpacing = 20
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = BaseCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.collectionViewLayout = collectionViewLayout
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .clear
@@ -48,7 +48,9 @@ extension MainViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.identifier, for: indexPath)
         guard let dishCell = cell as? DishCell else { return cell }
         let data = presenter.dishes[indexPath.row]
-        dishCell.configure(name: "", country: "", imageURL: URL(string: data.strMealThumb ?? ""))
+        dishCell.configure(name: data.name ?? "",
+                           country: data.country ?? "",
+                           imageURL: URL(string: data.imageUrl ?? ""))
         return dishCell
     }
 }
@@ -68,14 +70,21 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: MainViewProtocol {
+    func load() {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.startLoading()
+        }
+    }
     func succes() {
         DispatchQueue.main.async { [weak self] in
+            self?.collectionView.stopLoading()
             self?.collectionView.reloadData()
         }
     }
     func failure(errorDescription: String) {
         DispatchQueue.main.async { [weak self] in
-            //
+            self?.collectionView.stopLoading()
+            self?.showErrorAlert(message: errorDescription)
         }
     }
 }
@@ -96,5 +105,14 @@ private extension MainViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+}
+// MARK: - Private methods
+private extension MainViewController {
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
 }
