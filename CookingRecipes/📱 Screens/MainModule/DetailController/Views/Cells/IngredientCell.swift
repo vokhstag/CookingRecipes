@@ -12,12 +12,22 @@ class IngredientCell: UITableViewCell {
         return String(describing: self)
     }
     // MARK: - UI
+    lazy private var imageContentView: UIView = {
+        let view = UIView()
+        view.isOpaque = false
+        self.addSubview(view)
+        view.layer.cornerRadius = 5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.10)
+        return view
+    }()
     lazy var ingredientImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageView)
+        imageContentView.addSubview(imageView)
         return imageView
     }()
+    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,15 +61,22 @@ class IngredientCell: UITableViewCell {
 // MARK: - Setup
 private extension IngredientCell {
     func setup() {
+        self.backgroundColor = .clear
         setupUI()
     }
     func setupUI() {
         NSLayoutConstraint.activate([
-            ingredientImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            ingredientImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
-            ingredientImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
-            ingredientImageView.widthAnchor.constraint(equalToConstant: 60),
-            ingredientImageView.heightAnchor.constraint(equalToConstant: 60)
+            imageContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            imageContentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
+            imageContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
+            imageContentView.widthAnchor.constraint(equalToConstant: 60),
+            imageContentView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        NSLayoutConstraint.activate([
+            ingredientImageView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor, constant: 5),
+            ingredientImageView.topAnchor.constraint(equalTo: imageContentView.topAnchor, constant: 5),
+            ingredientImageView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -5),
+            ingredientImageView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor, constant: -5)
         ])
         NSLayoutConstraint.activate([
             measureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),

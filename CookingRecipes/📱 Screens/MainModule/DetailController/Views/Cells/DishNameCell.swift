@@ -15,7 +15,6 @@ class DishNameCell: UITableViewCell {
     lazy var dishImageView: UIImageView = {
         let imageView = UIImageView()
         self.addSubview(imageView)
-        imageView.layer.cornerRadius = 16
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -42,11 +41,18 @@ class DishNameCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        dishImageView.layer.cornerRadius = 16
+    }
+    // MARK: - Configure
     func configure(url: URL?, name: String?, country: String?) {
         dishNameLabel.text = name
         dishCountryLabel.text = country
         if let url = url {
             dishImageView.setImage(from: url)
+            dishImageView.clipsToBounds = true
         }
     }
 }
@@ -54,12 +60,13 @@ class DishNameCell: UITableViewCell {
 private extension DishNameCell {
     func setup() {
         setupUI()
+        self.backgroundColor = .clear
     }
     func setupUI() {
         NSLayoutConstraint.activate([
             dishImageView.topAnchor.constraint(equalTo: self.topAnchor),
             dishImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13),
-            dishImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 13),
+            dishImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -13),
             dishImageView.heightAnchor.constraint(equalTo: dishImageView.widthAnchor, multiplier: 0.75)
         ])
         NSLayoutConstraint.activate([

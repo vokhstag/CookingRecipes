@@ -14,11 +14,13 @@ class DetailViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.backgroundColor = .brandWhite
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DishNameCell.self, forCellReuseIdentifier: DishNameCell.identifier)
         tableView.register(InstructionCell.self, forCellReuseIdentifier: InstructionCell.identifier)
         tableView.register(IngredientCell.self, forCellReuseIdentifier: IngredientCell.identifier)
         tableView.dataSource = self
+        tableView.delegate = self
         self.view.addSubview(tableView)
         return tableView
     }()
@@ -79,6 +81,35 @@ extension DetailViewController: UITableViewDataSource {
             cell.configure(imageURL: url, name: ingredient, measure: measure)
             return cell
         default: return UITableViewCell()
+        }
+    }
+}
+// MARK: - UITableView Delegate
+extension DetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = TableHeaderView()
+        switch section {
+        case 0:
+            return UIView()
+        case 1:
+            let title = (presenter.dish.instructions == nil) ? "Ingredients" : "Instruction"
+            headerView.titleLabel.text = title
+            return headerView
+        case 2:
+            headerView.titleLabel.text = "Ingredients"
+            return headerView
+        default:
+            return UIView()
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 30
+        case 1, 2:
+            return 58
+        default:
+            return 0
         }
     }
 }

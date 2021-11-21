@@ -36,6 +36,7 @@ class InstructionCell: UITableViewCell {
 // MARK: - Setup
 private extension InstructionCell {
     func setup() {
+        self.backgroundColor = .clear
         setupUI()
     }
     func setupUI() {
