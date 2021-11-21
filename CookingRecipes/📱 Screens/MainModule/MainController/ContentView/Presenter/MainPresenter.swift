@@ -61,7 +61,7 @@ class MainPresenter: MainViewPresenterProtocol {
         }
     }
     func goToDetailRecipe(dish: Dish) {
-        router?.showRecipeController(dish: dish)
+        router?.showDetailController(dish: dish)
     }
 }
 

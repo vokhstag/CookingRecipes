@@ -10,7 +10,7 @@ import UIKit
 protocol AssemblyBuilderProtocol {
     func createMainController(router: MainRouterProtocol) -> UIViewController
     func createFavoriteFoodController() -> UIViewController
-    func createRecipeController() -> UIViewController
+    func createDetailController(dish: Dish) -> UIViewController
     func createAuthorizationModule() -> UIViewController
 }
 
@@ -35,9 +35,10 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         // TODO: - Добавить презентер и настройки
         return view
     }
-    func createRecipeController() -> UIViewController {
-        let view = RecipeViewController()
-        // TODO: - Добавить презентер и настройки
+    func createDetailController(dish: Dish) -> UIViewController {
+        let view = DetailViewController()
+        let presenter = DetailPresenter(dish: dish)
+        view.presenter = presenter
         return view
     }
     func createAuthorizationModule() -> UIViewController {

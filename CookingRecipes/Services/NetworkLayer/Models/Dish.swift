@@ -98,6 +98,9 @@ struct Dish: Decodable {
             ingredient9,
             ingredient10
         ].compactMap { return $0 }
+        .filter {
+            $0 != "" && $0 != " "
+        }
         return ingredients
     }
 }

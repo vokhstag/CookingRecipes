@@ -16,6 +16,7 @@ class InstructionCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Instruction"
+        self.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

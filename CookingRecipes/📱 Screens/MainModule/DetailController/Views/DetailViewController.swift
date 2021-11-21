@@ -13,10 +13,12 @@ class DetailViewController: UIViewController {
     // MARK: - UI
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.backgroundColor = .brandWhite
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DishNameCell.self, forCellReuseIdentifier: DishNameCell.identifier)
-        tableView.register(IngredientCell.self, forCellReuseIdentifier: InstructionCell.identifier)
+        tableView.register(InstructionCell.self, forCellReuseIdentifier: InstructionCell.identifier)
         tableView.register(IngredientCell.self, forCellReuseIdentifier: IngredientCell.identifier)
+        tableView.dataSource = self
         self.view.addSubview(tableView)
         return tableView
     }()
@@ -56,13 +58,17 @@ extension DetailViewController: UITableViewDataSource {
             cell.configure(url: URL(string: data.imageUrl ?? ""), name: data.name, country: data.country)
             return cell
         case 1:
-            if data.instructions != nil {
+            if data.instructions == nil {
                 fallthrough
             }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: InstructionCell.identifier,
                                                            for: indexPath) as? InstructionCell
-            else { return UITableViewCell() }
+            else {
+                return UITableViewCell()
+                
+            }
             cell.configure(with: data.instructions ?? "")
+            return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: IngredientCell.identifier,
                                                            for: indexPath) as? IngredientCell
@@ -71,13 +77,23 @@ extension DetailViewController: UITableViewDataSource {
             let measure = data.allMeasures()[indexPath.row]
             let url = Endpoints.ingredientImage(ingredient: ingredient).url
             cell.configure(imageURL: url, name: ingredient, measure: measure)
+            return cell
         default: return UITableViewCell()
         }
-        return UITableViewCell()
     }
 }
 // MARK: - Setup
 private extension DetailViewController {
     func setup() {
+        self.navigationController?.navigationBar.isHidden = false
+        setupUI()
+    }
+    func setupUI() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
     }
 }

@@ -23,7 +23,6 @@
 		853E85FE2729358D00B56679 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E85FD2729358D00B56679 /* TabBarRouter.swift */; };
 		853E86032729369200B56679 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E86022729369200B56679 /* BaseRouter.swift */; };
 		853E860B27293A5100B56679 /* FavoriteFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E860A27293A5100B56679 /* FavoriteFoodViewController.swift */; };
-		853E861227293B2300B56679 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E861127293B2300B56679 /* RecipeViewController.swift */; };
 		853E861B27294E7700B56679 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E861A27294E7700B56679 /* UIImageExtension.swift */; };
 		853E86232729595F00B56679 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E86222729595F00B56679 /* UIColorExtension.swift */; };
 		853E862827295EE900B56679 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E862727295EE900B56679 /* MainPresenter.swift */; };
@@ -94,7 +93,6 @@
 		853E85FD2729358D00B56679 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		853E86022729369200B56679 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		853E860A27293A5100B56679 /* FavoriteFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodViewController.swift; sourceTree = "<group>"; };
-		853E861127293B2300B56679 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		853E861A27294E7700B56679 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		853E86222729595F00B56679 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		853E862727295EE900B56679 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				853E85ED2729331200B56679 /* MainRouter.swift */,
 				853E85E9272932DB00B56679 /* MainController */,
 				85DCFDC7274A10B800EA30A0 /* DetailController */,
-				853E860F27293B0000B56679 /* RecipeController */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -343,22 +340,6 @@
 				856DFE142742A8AB00208C56 /* ContentView */,
 			);
 			path = MainController;
-			sourceTree = "<group>";
-		};
-		853E860F27293B0000B56679 /* RecipeController */ = {
-			isa = PBXGroup;
-			children = (
-				853E861027293B0800B56679 /* Views */,
-			);
-			path = RecipeController;
-			sourceTree = "<group>";
-		};
-		853E861027293B0800B56679 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				853E861127293B2300B56679 /* RecipeViewController.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		853E861927294E4400B56679 /* Extensions */ = {
@@ -746,7 +727,6 @@
 				85DCFDD3274A28E100EA30A0 /* DetailPresenter.swift in Sources */,
 				85DCFDEA274A391900EA30A0 /* DishNameCell.swift in Sources */,
 				853E8637272964EE00B56679 /* CategoriesNetworkService.swift in Sources */,
-				853E861227293B2300B56679 /* RecipeViewController.swift in Sources */,
 				853E862827295EE900B56679 /* MainPresenter.swift in Sources */,
 				85DCFDF2274A3E8F00EA30A0 /* InstructionCell.swift in Sources */,
 				853E861B27294E7700B56679 /* UIImageExtension.swift in Sources */,

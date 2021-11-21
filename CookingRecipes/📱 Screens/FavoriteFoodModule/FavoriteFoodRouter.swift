@@ -28,8 +28,8 @@ class FavoriteFoodRouter: FavoriteFoodRouterProtocol {
                                                      selectedImage: UIImage.TabBarIcons.bookmarkSelected)
         navigationController.viewControllers = [mainViewController]
     }
-    func showRecipeController() {
-        guard let detailViewController = assemblyBuilder?.createRecipeController() else { return }
-        navigationController.pushViewController(detailViewController, animated: true)
-    }
+//    func showRecipeController() {
+//        guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish) else { return }
+//        navigationController.pushViewController(detailViewController, animated: true)
+//    }
 }
