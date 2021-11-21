@@ -11,47 +11,23 @@ class DetailViewController: UIViewController {
     // MARK: DI
     var presenter: DetailPresenterType!
     // MARK: - UI
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        self.view.addSubview(scrollView)
-        scrollView.backgroundColor = .brandWhite
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        self.scrollView.addSubview(imageView)
-        imageView.layer.cornerRadius = 16
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    lazy var dishNameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(label)
-        return label
-    }()
-    lazy var dishCountryLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(label)
-        return label
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tableView)
+        return tableView
     }()
     lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Instruction"
         label.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(label)
         return label
     }()
     lazy var instructionDescriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(label)
         return label
     }()
     lazy var ingredients: UILabel = {
@@ -59,12 +35,16 @@ class DetailViewController: UIViewController {
         label.numberOfLines = 0
         label.text = "Ingredients"
         label.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(label)
         return label
     }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
+    }
+}
+// MARK: - Setup
+private extension DetailViewController {
+    func setup() {
     }
 }
