@@ -17,19 +17,6 @@ class DetailViewController: UIViewController {
         self.view.addSubview(tableView)
         return tableView
     }()
-    lazy var instructionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = "Instruction"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    lazy var instructionDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     lazy var ingredients: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
