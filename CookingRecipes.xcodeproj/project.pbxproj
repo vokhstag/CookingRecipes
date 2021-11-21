@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,8 +32,6 @@
 		856DFD93273C317900208C56 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */; };
 		856DFE172742A8EB00208C56 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE162742A8EB00208C56 /* MainContainerViewController.swift */; };
 		856DFE1F2742E3F500208C56 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE1E2742E3F500208C56 /* Endpoints.swift */; };
-		856DFE242742E67A00208C56 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE232742E67A00208C56 /* BaseNetworkService.swift */; };
-		856DFE292742E71200208C56 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE282742E71200208C56 /* NetworkServiceError.swift */; };
 		856DFE2E2742E98700208C56 /* RecipesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */; };
 		856DFE3B27438B9900208C56 /* MainContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE3A27438B9900208C56 /* MainContainerPresenter.swift */; };
 		85DCFD922745315100EA30A0 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD912745315100EA30A0 /* BaseCollectionView.swift */; };
@@ -47,6 +45,7 @@
 		85DCFDF7274A4EC500EA30A0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFDF6274A4EC500EA30A0 /* IngredientCell.swift */; };
 		85DCFE02274A6A9F00EA30A0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFE01274A6A9F00EA30A0 /* BaseTableViewCell.swift */; };
 		85DCFE0B274A8CD800EA30A0 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFE0A274A8CD800EA30A0 /* TableHeaderView.swift */; };
+		85DCFE17274AAC6100EA30A0 /* BaseNetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 85DCFE16274AAC6100EA30A0 /* BaseNetworkService */; };
 		B01928734DE776F3FD210845 /* Pods_CookingRecipes_CookingRecipesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C3F1C7579BA5B9714DADA6 /* Pods_CookingRecipes_CookingRecipesUITests.framework */; };
 		D0AFEC7DB79B1DF27DAA280A /* Pods_CookingRecipesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE0BF8C6AFDF944C835F491 /* Pods_CookingRecipesTests.framework */; };
 /* End PBXBuildFile section */
@@ -103,8 +102,6 @@
 		856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		856DFE162742A8EB00208C56 /* MainContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		856DFE1E2742E3F500208C56 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		856DFE232742E67A00208C56 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
-		856DFE282742E71200208C56 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 		856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkService.swift; sourceTree = "<group>"; };
 		856DFE3A27438B9900208C56 /* MainContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerPresenter.swift; sourceTree = "<group>"; };
 		85DCFD912745315100EA30A0 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -130,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85DCFE17274AAC6100EA30A0 /* BaseNetworkService in Frameworks */,
 				05777C0E9E9B29D216A0B346 /* Pods_CookingRecipes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,8 +369,6 @@
 				856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */,
 				853E862C2729610100B56679 /* Models */,
 				856DFE1E2742E3F500208C56 /* Endpoints.swift */,
-				856DFE232742E67A00208C56 /* BaseNetworkService.swift */,
-				856DFE282742E71200208C56 /* NetworkServiceError.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -511,6 +507,9 @@
 			dependencies = (
 			);
 			name = CookingRecipes;
+			packageProductDependencies = (
+				85DCFE16274AAC6100EA30A0 /* BaseNetworkService */,
+			);
 			productName = CookingRecipes;
 			productReference = 8504B8EC27089E060058CD28 /* CookingRecipes.app */;
 			productType = "com.apple.product-type.application";
@@ -584,6 +583,9 @@
 				Base,
 			);
 			mainGroup = 8504B8E327089E060058CD28;
+			packageReferences = (
+				85DCFE15274AAC6100EA30A0 /* XCRemoteSwiftPackageReference "BaseNetworkService" */,
+			);
 			productRefGroup = 8504B8ED27089E060058CD28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -717,11 +719,9 @@
 				853E86232729595F00B56679 /* UIColorExtension.swift in Sources */,
 				8504B8FA27089E060058CD28 /* CookingRecipes.xcdatamodeld in Sources */,
 				85DCFDF7274A4EC500EA30A0 /* IngredientCell.swift in Sources */,
-				856DFE292742E71200208C56 /* NetworkServiceError.swift in Sources */,
 				85DCFDAE2748ABDB00EA30A0 /* Constants.swift in Sources */,
 				85DCFD9D27468D1300EA30A0 /* DishCell.swift in Sources */,
 				85DCFD972745537C00EA30A0 /* UIImageViewExtension.swift in Sources */,
-				856DFE242742E67A00208C56 /* BaseNetworkService.swift in Sources */,
 				853E85EE2729331200B56679 /* MainRouter.swift in Sources */,
 				8504B8F427089E060058CD28 /* AuthorizationViewController.swift in Sources */,
 				856DFE172742A8EB00208C56 /* MainContainerViewController.swift in Sources */,
@@ -1077,6 +1077,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85DCFE15274AAC6100EA30A0 /* XCRemoteSwiftPackageReference "BaseNetworkService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vokhstag/BaseNetworkService.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85DCFE16274AAC6100EA30A0 /* BaseNetworkService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85DCFE15274AAC6100EA30A0 /* XCRemoteSwiftPackageReference "BaseNetworkService" */;
+			productName = BaseNetworkService;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8504B8F827089E060058CD28 /* CookingRecipes.xcdatamodeld */ = {

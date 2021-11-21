@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BaseNetworkService
 
 typealias CategoriesResponse = Result<[Category], NetworkServiceError>
 
