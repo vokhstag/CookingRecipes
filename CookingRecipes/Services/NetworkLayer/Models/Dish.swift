@@ -8,35 +8,35 @@
 import Foundation
 
 struct Dish: Decodable {
-    let id: String
-    let name: String?
-    let drinkAlternate: String?
-    let category: String?
-    let country: String?
-    let instructions: String?
-    let imageUrl: String?
-    let tags: String?
-    let youtube: String?
-    let ingredient1: String?
-    let ingredient2: String?
-    let ingredient3: String?
-    let ingredient4: String?
-    let ingredient5: String?
-    let ingredient6: String?
-    let ingredient7: String?
-    let ingredient8: String?
-    let ingredient9: String?
-    let ingredient10: String?
-    let measure1: String?
-    let measure2: String?
-    let measure3: String?
-    let measure4: String?
-    let measure5: String?
-    let measure6: String?
-    let measure7: String?
-    let measure8: String?
-    let measure9: String?
-    let measure10: String?
+    var id: String
+    var name: String?
+    var drinkAlternate: String?
+    var category: String?
+    var country: String?
+    var instructions: String?
+    var imageUrl: String?
+    var tags: String?
+    var youtube: String?
+    var ingredient1: String?
+    var ingredient2: String?
+    var ingredient3: String?
+    var ingredient4: String?
+    var ingredient5: String?
+    var ingredient6: String?
+    var ingredient7: String?
+    var ingredient8: String?
+    var ingredient9: String?
+    var ingredient10: String?
+    var measure1: String?
+    var measure2: String?
+    var measure3: String?
+    var measure4: String?
+    var measure5: String?
+    var measure6: String?
+    var measure7: String?
+    var measure8: String?
+    var measure9: String?
+    var measure10: String?
     // MARK: - CodingKeys
     private enum CodingKeys: String, CodingKey {
         case id = "idMeal"
@@ -102,6 +102,9 @@ struct Dish: Decodable {
             $0 != "" && $0 != " "
         }
         return ingredients
+    }
+    init() {
+        self.id = ""
     }
 }
 
