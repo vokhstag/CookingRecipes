@@ -2,17 +2,20 @@
 //  BaseNetworkService.swift
 //  CookingRecipes
 //
-//  Created by Yunus Abubakarov on 15.11.2021.
+//  Created by Yunus Abubakarov on 22.11.2021.
 //
 
 import Foundation
 
-class BaseNetworkService {
-    typealias Handler = (Data?, URLResponse?, Error?) -> Void
-    lazy var session = URLSession(configuration: configuration)
+open class BaseNetworkService {
+    public typealias Handler = (Data?, URLResponse?, Error?) -> Void
+    public lazy var session = URLSession(configuration: configuration)
     private let configuration = URLSessionConfiguration.default
-    let decoder = JSONDecoder()
-    func httpResponse(data: Data?, response: URLResponse?) throws -> Data {
+    public let decoder = JSONDecoder()
+    // MARK: - Constructor
+    public init() {
+    }
+    public func httpResponse(data: Data?, response: URLResponse?) throws -> Data {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkServiceError.nonResponse
         }

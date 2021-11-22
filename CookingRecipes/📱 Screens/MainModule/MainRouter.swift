@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainRouterProtocol: BaseRouter {
     func initialViewController()
-    func showRecipeController(dish: Dish)
+    func showDetailController(dish: Dish)
 }
 
 class MainRouter: MainRouterProtocol {
@@ -30,8 +30,8 @@ class MainRouter: MainRouterProtocol {
                                                      selectedImage: UIImage.TabBarIcons.homeSelected)
         navigationController.viewControllers = [mainViewController]
     }
-    func showRecipeController(dish: Dish) {
-        guard let detailViewController = assemblyBuilder?.createRecipeController() else { return }
+    func showDetailController(dish: Dish) {
+        guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish) else { return }
         navigationController.pushViewController(detailViewController, animated: true)
     }
 }

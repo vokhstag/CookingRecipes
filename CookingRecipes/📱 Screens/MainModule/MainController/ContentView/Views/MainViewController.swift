@@ -57,6 +57,10 @@ extension MainViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionView Delegate
 extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dish = presenter.dishes[indexPath.row]
+        presenter.goToDetailRecipe(dish: dish)
+    }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {

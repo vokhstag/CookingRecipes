@@ -16,8 +16,8 @@ protocol MainViewProtocol: class {
 protocol MainViewPresenterProtocol: class {
     init(view: MainViewProtocol, networkService: RecipesNetworkServiceProtocol, router: MainRouterProtocol)
     var dishes: [Dish] {get set}
-    func getListOfDishes(url: URL)
-    func searchDishes(url: URL)
+    func getListOfDishes(url: URL?)
+    func searchDishes(url: URL?)
     func goToDetailRecipe(dish: Dish)
 }
 
@@ -30,9 +30,12 @@ class MainPresenter: MainViewPresenterProtocol {
         self.view = view
         self.networkService = networkService
         self.router = router
-      //  getListOfDishes(url: )
     }
-    func getListOfDishes(url: URL) {
+    func getListOfDishes(url: URL?) {
+        guard let url = url else {
+            self.view?.failure(errorDescription: "Отсутствует URL")
+            return
+        }
         self.view?.load()
         self.dishes = []
         networkService.getDishes(url: url) { [weak self] result in
@@ -46,7 +49,11 @@ class MainPresenter: MainViewPresenterProtocol {
             }
         }
     }
-    func searchDishes(url: URL) {
+    func searchDishes(url: URL?) {
+        guard let url = url else {
+            self.view?.failure(errorDescription: "Отсутствует URL")
+            return
+        }
         self.view?.load()
         self.dishes = []
         networkService.searchDishes(url: url) { [weak self] result in
@@ -61,7 +68,7 @@ class MainPresenter: MainViewPresenterProtocol {
         }
     }
     func goToDetailRecipe(dish: Dish) {
-        router?.showRecipeController(dish: dish)
+        router?.showDetailController(dish: dish)
     }
 }
 
