@@ -11,6 +11,8 @@ import CoreData
 protocol DishesDataManagerProtocol {
     func saveDish(dish: Dish)
     func getDishes() -> [FavoriteDish]
+    func dishBy(id: String) -> FavoriteDish?
+    func deleteDishBy(id: String)
 }
 
 class DishesDataManager {
@@ -71,5 +73,20 @@ extension DishesDataManager: DishesDataManagerProtocol {
         } catch {
             return []
         }
+    }
+    func dishBy(id: String) -> FavoriteDish? {
+        guard let user = user else { return nil }
+        let predicate = NSPredicate(format: "user = %@ && id = %@", argumentArray: [user, id])
+        dishFetchResult.predicate = predicate
+        do {
+            let dishes = try context.fetch(dishFetchResult)
+            return dishes.first
+        } catch {
+            return nil
+        }
+    }
+    func deleteDishBy(id: String) {
+        guard let dish = dishBy(id: id) else { return }
+        context.delete(dish)
     }
 }

@@ -23,9 +23,12 @@ class TabBarRouter: TabBarRouterProtocol {
         let mainNavigationController = UINavigationController()
         let favoriteFoodNavigationController = UINavigationController()
         let userDataManager = UserDataManager()
+        let dishesDataManager = DishesDataManager()
         let mainRouter = MainRouter(tabBarController: self.tabBarController,
                                     navigationController: mainNavigationController,
-                                    assemblyBuilder: self.assemblyBuilder, userDataManager: userDataManager)
+                                    assemblyBuilder: self.assemblyBuilder,
+                                    userDataManager: userDataManager,
+                                    dishesDataManager: dishesDataManager)
         let favoriteFoodRouter = FavoriteFoodRouter(tabBarController: self.tabBarController,
                                                     navigationController: favoriteFoodNavigationController,
                                                     assemblyBuilder: self.assemblyBuilder)

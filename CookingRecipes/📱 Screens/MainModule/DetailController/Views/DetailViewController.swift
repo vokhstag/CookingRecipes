@@ -127,4 +127,13 @@ private extension DetailViewController {
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
+    func setupNavigationBar() {
+        let addToFavoriteButton = UIBarButtonItem(image: UIImage.TabBarIcons.bookmark,
+                                      style: .plain, target: self,
+                                      action: #selector(addToFavoriteButtonTapped))
+        self.navigationItem.rightBarButtonItem  = addToFavoriteButton
+    }
+    @objc func addToFavoriteButtonTapped() {
+        
+    }
 }

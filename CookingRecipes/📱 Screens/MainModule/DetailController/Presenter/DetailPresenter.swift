@@ -9,12 +9,25 @@ import Foundation
 
 protocol DetailPresenterType {
     var dish: Dish { get }
+    func saveDish()
+    func removeDishFromFavorite()
+    func isFavoriteDish() -> Bool
 }
 
 class DetailPresenter: DetailPresenterType {
     var dish: Dish
-
-    init(dish: Dish) {
+    private let dishesDataManager: DishesDataManagerProtocol
+    init(dish: Dish, dishesDataManager: DishesDataManagerProtocol) {
         self.dish = dish
+        self.dishesDataManager = dishesDataManager
+    }
+    func saveDish() {
+        dishesDataManager.saveDish(dish: dish)
+    }
+    func removeDishFromFavorite() {
+        self.dishesDataManager.deleteDishBy(id: dish.id)
+    }
+    func isFavoriteDish() -> Bool {
+        return self.dishesDataManager.dishBy(id: dish.id) != nil
     }
 }

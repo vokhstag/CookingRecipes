@@ -18,14 +18,18 @@ class MainRouter: MainRouterProtocol {
     var navigationController: UINavigationController
     var assemblyBuilder: AssemblyBuilderProtocol?
     private var userDataManager: UserDataManagerProtocol
+    private var dishesDataManager: DishesDataManagerProtocol
+    // MARK: - Constructor
     init(tabBarController: UITabBarController?,
          navigationController: UINavigationController,
          assemblyBuilder: AssemblyBuilderProtocol?,
-         userDataManager: UserDataManagerProtocol) {
+         userDataManager: UserDataManagerProtocol,
+         dishesDataManager: DishesDataManagerProtocol) {
         self.tabBarController = tabBarController
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
         self.userDataManager = userDataManager
+        self.dishesDataManager = dishesDataManager
     }
     func initialViewController() {
         guard let mainViewController = assemblyBuilder?.createMainController(router: self) else { return }
@@ -35,7 +39,9 @@ class MainRouter: MainRouterProtocol {
         navigationController.viewControllers = [mainViewController]
     }
     func showDetailController(dish: Dish) {
-        guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish) else { return }
+        guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish,
+                                                                                 dataManager: dishesDataManager)
+        else { return }
         navigationController.pushViewController(detailViewController, animated: true)
     }
     func showAuthorizationControllerIfNeed() {
