@@ -107,7 +107,7 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     }
     
     func failure(errorDescription: String) {
-        showErrorAlert(message: errorDescription)
+        showAlert(message: errorDescription)
     }
 }
 // MARK: Setup
@@ -179,14 +179,29 @@ private extension AuthorizationViewController {
 }
 // MARK: - Private methods
 private extension AuthorizationViewController {
-    func showErrorAlert(message: String) {
+    func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }
     @objc func registrationTapped() {
-        let login = loginTextField.text
-        let name = nameTextField.text
+        guard let login = loginTextField.text, login != "" else {
+            showAlert(message: "login не может быть пустым")
+            return
+        }
+        guard let name = nameTextField.text, name != "" else {
+            showAlert(message: "Поле Name не может быть пустым")
+            return
+        }
+        guard let password = passwordTextField.text, confirmPasswordTextField.text == password else {
+            showAlert(message: "Пароли не совпадают")
+            return
+        }
+        guard password != "", password != " " else {
+            showAlert(message: "Пароль не может быть пустым")
+            return
+        }
+        presenter.createNewUser(name: name, login: login, password: password)
     }
 }
