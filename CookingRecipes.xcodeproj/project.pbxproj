@@ -40,6 +40,7 @@
 		85DC003D274CD12000EA30A0 /* AuthorizationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */; };
 		85DC0040274CEB0C00EA30A0 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC002D274C36FB00EA30A0 /* UserDataManager.swift */; };
 		85DC0043274CEB1A00EA30A0 /* AuthorizationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */; };
+		85DC0049274CFDE400EA30A0 /* DishesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */; };
 		85DCFD922745315100EA30A0 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD912745315100EA30A0 /* BaseCollectionView.swift */; };
 		85DCFD972745537C00EA30A0 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */; };
 		85DCFD9D27468D1300EA30A0 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD9C27468D1300EA30A0 /* DishCell.swift */; };
@@ -142,6 +143,7 @@
 		85DC0034274C382700EA30A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		85DC0038274C385100EA30A0 /* FavoriteDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDish.swift; sourceTree = "<group>"; };
 		85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresentor.swift; sourceTree = "<group>"; };
+		85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDataManager.swift; sourceTree = "<group>"; };
 		85DCFD912745315100EA30A0 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		85DCFD9C27468D1300EA30A0 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				85DC002D274C36FB00EA30A0 /* UserDataManager.swift */,
+				85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 				853E863F27298CF600B56679 /* Category.swift in Sources */,
 				8504B8F027089E060058CD28 /* AppDelegate.swift in Sources */,
 				85DCFFDD274B899A00EA30A0 /* BaseNetworkService.swift in Sources */,
+				85DC0049274CFDE400EA30A0 /* DishesDataManager.swift in Sources */,
 				853E85F6272934D900B56679 /* FavoriteFoodRouter.swift in Sources */,
 				853E85B727281AFC00B56679 /* MainViewController.swift in Sources */,
 				856DFE2E2742E98700208C56 /* RecipesNetworkService.swift in Sources */,
