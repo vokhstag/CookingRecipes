@@ -9,9 +9,13 @@ import UIKit
 
 protocol AssemblyBuilderProtocol {
     func createMainController(router: MainRouterProtocol) -> UIViewController
-    func createFavoriteFoodController(router: FavoriteFoodRouterProtocol, dataManager: DishesDataManagerProtocol) -> UIViewController
-    func createDetailController(dish: Dish, dataManager: DishesDataManagerProtocol) -> UIViewController
+    func createFavoriteFoodController(router: FavoriteFoodRouterProtocol,
+                                      dataManager: DishesDataManagerProtocol) -> UIViewController
+    func createDetailController(dish: Dish,
+                                dataManager: DishesDataManagerProtocol,
+                                router: BaseRouter) -> UIViewController
     func createAuthorizationController(dataManager: UserDataManagerProtocol) -> UIViewController
+    func createIngredientController(url: URL?, name: String, measure: String?) -> UIViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
@@ -30,15 +34,18 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         view.contentViewController = contentViewController
         return view
     }
-    func createFavoriteFoodController(router: FavoriteFoodRouterProtocol, dataManager: DishesDataManagerProtocol) -> UIViewController {
+    func createFavoriteFoodController(router: FavoriteFoodRouterProtocol,
+                                      dataManager: DishesDataManagerProtocol) -> UIViewController {
         let view = FavoriteFoodViewController()
         let presenter = FavoriteFoodPresenter(router: router, dishesDataManager: dataManager)
         view.presenter = presenter
         return view
     }
-    func createDetailController(dish: Dish, dataManager: DishesDataManagerProtocol) -> UIViewController {
+    func createDetailController(dish: Dish,
+                                dataManager: DishesDataManagerProtocol,
+                                router: BaseRouter) -> UIViewController {
         let view = DetailViewController()
-        let presenter = DetailPresenter(view: view, dish: dish, dishesDataManager: dataManager)
+        let presenter = DetailPresenter(view: view, router: router, dish: dish, dishesDataManager: dataManager)
         view.presenter = presenter
         return view
     }
@@ -46,6 +53,12 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         let view = AuthorizationViewController()
         let presenter = AuthorizationPresenter(view: view,
                                                dataManager: dataManager)
+        view.presenter = presenter
+        return view
+    }
+    func createIngredientController(url: URL?, name: String, measure: String?) -> UIViewController {
+        let view = IngredientViewController()
+        let presenter = IngredientPresenter(imageURL: url, name: name, measure: measure)
         view.presenter = presenter
         return view
     }

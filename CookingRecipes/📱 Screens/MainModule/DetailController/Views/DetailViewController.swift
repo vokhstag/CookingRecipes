@@ -92,6 +92,12 @@ extension DetailViewController: UITableViewDataSource {
 }
 // MARK: - UITableView Delegate
 extension DetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) as? IngredientCell != nil else { return }
+        let name = presenter.dish.allIngredients()[indexPath.row]
+        let measure = presenter.dish.allMeasures()[indexPath.row]
+        presenter.goToIngredients(name: name, measure: measure)
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = TableHeaderView()
         switch section {
