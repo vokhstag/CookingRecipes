@@ -11,6 +11,7 @@ protocol MainRouterProtocol: BaseRouter {
     func initialViewController()
     func showDetailController(dish: Dish)
     func showAuthorizationControllerIfNeed()
+    func showIngredientController(url: URL?, name: String, measure: String?)
 }
 
 class MainRouter: MainRouterProtocol {
@@ -40,7 +41,7 @@ class MainRouter: MainRouterProtocol {
     }
     func showDetailController(dish: Dish) {
         guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish,
-                                                                                 dataManager: dishesDataManager)
+                                                                                 dataManager: dishesDataManager, router: self)
         else { return }
         navigationController.pushViewController(detailViewController, animated: true)
     }
@@ -51,5 +52,12 @@ class MainRouter: MainRouterProtocol {
         else { return }
         authorizationController.modalPresentationStyle = .fullScreen
         self.navigationController.present(authorizationController, animated: true)
+    }
+    func showIngredientController(url: URL?, name: String, measure: String?) {
+        guard let ingredientViewContrroller = assemblyBuilder?.createIngredientController(url: url,
+                                                                                          name: name,
+                                                                                          measure: measure)
+        else { return }
+        self.navigationController.present(ingredientViewContrroller, animated: true)
     }
 }

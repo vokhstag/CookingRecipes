@@ -10,6 +10,7 @@ import UIKit
 protocol FavoriteFoodRouterProtocol: BaseRouter {
     func initialViewController()
     func showDetailController(dish: Dish)
+    func showIngredientController(url: URL?, name: String, measure: String?)
 }
 
 class FavoriteFoodRouter: FavoriteFoodRouterProtocol {
@@ -37,8 +38,16 @@ class FavoriteFoodRouter: FavoriteFoodRouterProtocol {
     }
     func showDetailController(dish: Dish) {
         guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish,
-                                                                                 dataManager: dishesDataManager)
+                                                                                 dataManager: dishesDataManager,
+                                                                                 router: self)
         else { return }
         navigationController.pushViewController(detailViewController, animated: true)
+    }
+    func showIngredientController(url: URL?, name: String, measure: String?) {
+        guard let ingredientViewContrroller = assemblyBuilder?.createIngredientController(url: url,
+                                                                                          name: name,
+                                                                                          measure: measure)
+        else { return }
+        self.navigationController.present(ingredientViewContrroller, animated: true)
     }
 }
