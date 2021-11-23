@@ -7,5 +7,5 @@
 
 import CoreData
 
-class FavoriteDish: NSManagedObject {
+class FavoriteFood: NSManagedObject {
 }

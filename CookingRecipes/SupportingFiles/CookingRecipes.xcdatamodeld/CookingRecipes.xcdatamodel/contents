@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="FavoriteDish" representedClassName=".FavoriteDish" syncable="YES" codeGenerationType="category">
+    <entity name="FavoriteFood" representedClassName=".FavoriteFood" syncable="YES" codeGenerationType="category">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
@@ -35,10 +35,10 @@
         <attribute name="login" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
-        <relationship name="favoriteDish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteDish" inverseName="user" inverseEntity="FavoriteDish"/>
+        <relationship name="favoriteDish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteFood" inverseName="user" inverseEntity="FavoriteFood"/>
     </entity>
     <elements>
-        <element name="FavoriteDish" positionX="159.2578125" positionY="106.1796875" width="128" height="463"/>
+        <element name="FavoriteFood" positionX="189.63671875" positionY="-285.2421875" width="128" height="463"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

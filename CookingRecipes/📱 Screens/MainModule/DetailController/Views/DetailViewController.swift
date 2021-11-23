@@ -24,6 +24,12 @@ class DetailViewController: UIViewController {
         self.view.addSubview(tableView)
         return tableView
     }()
+    lazy var addToFavoriteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage.TabBarIcons.bookmark,
+                                     style: .plain, target: self,
+                                     action: #selector(addToFavoriteButtonTapped))
+        return button
+    }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,11 +119,26 @@ extension DetailViewController: UITableViewDelegate {
         }
     }
 }
+// MARK: - DetailViewProtocol
+extension DetailViewController: DetailViewProtocol {
+    func dishAddedToFavorite() {
+        let image = UIImage.TabBarIcons.bookmarkSelected
+        self.addToFavoriteButton.image = image
+    }
+    func dishRemovedFromFavorite() {
+        let image = UIImage.TabBarIcons.bookmark
+        self.addToFavoriteButton.image = image
+    }
+    func failure(errorDescription: String) {
+        showErrorAlert(message: errorDescription)
+    }
+}
 // MARK: - Setup
 private extension DetailViewController {
     func setup() {
         self.navigationController?.navigationBar.isHidden = false
         setupUI()
+        setupNavigationBar()
     }
     func setupUI() {
         NSLayoutConstraint.activate([
@@ -128,12 +149,24 @@ private extension DetailViewController {
         ])
     }
     func setupNavigationBar() {
-        let addToFavoriteButton = UIBarButtonItem(image: UIImage.TabBarIcons.bookmark,
-                                      style: .plain, target: self,
-                                      action: #selector(addToFavoriteButtonTapped))
+        let image = (presenter.isFavoriteDish()) ? UIImage.TabBarIcons.bookmarkSelected : UIImage.TabBarIcons.bookmark
+        self.addToFavoriteButton.image = image
         self.navigationItem.rightBarButtonItem  = addToFavoriteButton
     }
+}
+// MARK: - Private methods
+private extension DetailViewController {
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
     @objc func addToFavoriteButtonTapped() {
-        
+        if presenter.isFavoriteDish() {
+            presenter.removeDishFromFavorite()
+        } else {
+            presenter.saveDish()
+        }
     }
 }

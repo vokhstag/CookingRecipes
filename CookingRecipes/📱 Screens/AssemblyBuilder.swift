@@ -37,7 +37,7 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
     }
     func createDetailController(dish: Dish, dataManager: DishesDataManagerProtocol) -> UIViewController {
         let view = DetailViewController()
-        let presenter = DetailPresenter(dish: dish, dishesDataManager: dataManager)
+        let presenter = DetailPresenter(view: view, dish: dish, dishesDataManager: dataManager)
         view.presenter = presenter
         return view
     }
