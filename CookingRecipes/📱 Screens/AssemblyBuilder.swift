@@ -11,7 +11,7 @@ protocol AssemblyBuilderProtocol {
     func createMainController(router: MainRouterProtocol) -> UIViewController
     func createFavoriteFoodController() -> UIViewController
     func createDetailController(dish: Dish) -> UIViewController
-    func createAuthorizationModule() -> UIViewController
+    func createAuthorizationController(dataManager: UserDataManagerProtocol) -> UIViewController
 }
 
 class AssemblyBuilder: AssemblyBuilderProtocol {
@@ -41,9 +41,11 @@ class AssemblyBuilder: AssemblyBuilderProtocol {
         view.presenter = presenter
         return view
     }
-    func createAuthorizationModule() -> UIViewController {
+    func createAuthorizationController(dataManager: UserDataManagerProtocol) -> UIViewController {
         let view = AuthorizationViewController()
-        // TODO: - Добавить презентер и настройки
+        let presenter = AuthorizationPresenter(view: view,
+                                               dataManager: dataManager)
+        view.presenter = presenter
         return view
     }
 }

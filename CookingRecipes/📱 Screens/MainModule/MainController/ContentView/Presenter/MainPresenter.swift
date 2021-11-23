@@ -19,6 +19,7 @@ protocol MainViewPresenterProtocol: class {
     func getListOfDishes(url: URL?)
     func searchDishes(url: URL?)
     func goToDetailRecipe(dish: Dish)
+    func showAuthorizationViewIfNeed()
 }
 
 class MainPresenter: MainViewPresenterProtocol {
@@ -69,6 +70,9 @@ class MainPresenter: MainViewPresenterProtocol {
     }
     func goToDetailRecipe(dish: Dish) {
         router?.showDetailController(dish: dish)
+    }
+    func showAuthorizationViewIfNeed() {
+        router?.showAuthorizationControllerIfNeed()
     }
 }
 

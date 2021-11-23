@@ -34,6 +34,13 @@
 		856DFE2E2742E98700208C56 /* RecipesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */; };
 		856DFE3B27438B9900208C56 /* MainContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE3A27438B9900208C56 /* MainContainerPresenter.swift */; };
 		85DC001F274BA88700EA30A0 /* MainPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC001E274BA88700EA30A0 /* MainPresenterTest.swift */; };
+		85DC002E274C36FB00EA30A0 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC002D274C36FB00EA30A0 /* UserDataManager.swift */; };
+		85DC0035274C382700EA30A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC0034274C382700EA30A0 /* User.swift */; };
+		85DC0039274C385100EA30A0 /* FavoriteDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC0038274C385100EA30A0 /* FavoriteDish.swift */; };
+		85DC003D274CD12000EA30A0 /* AuthorizationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */; };
+		85DC0040274CEB0C00EA30A0 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC002D274C36FB00EA30A0 /* UserDataManager.swift */; };
+		85DC0043274CEB1A00EA30A0 /* AuthorizationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */; };
+		85DC0049274CFDE400EA30A0 /* DishesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */; };
 		85DCFD922745315100EA30A0 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD912745315100EA30A0 /* BaseCollectionView.swift */; };
 		85DCFD972745537C00EA30A0 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */; };
 		85DCFD9D27468D1300EA30A0 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD9C27468D1300EA30A0 /* DishCell.swift */; };
@@ -80,7 +87,6 @@
 		85DCFFC5274B859100EA30A0 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */; };
 		85DCFFC9274B859E00EA30A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8504B8FB27089E090058CD28 /* Assets.xcassets */; };
 		85DCFFCD274B869C00EA30A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8504B8FD27089E090058CD28 /* LaunchScreen.storyboard */; };
-		85DCFFD1274B86A200EA30A0 /* CookingRecipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8504B8F827089E060058CD28 /* CookingRecipes.xcdatamodeld */; };
 		85DCFFDD274B899A00EA30A0 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFFDC274B899A00EA30A0 /* BaseNetworkService.swift */; };
 		85DCFFE2274B8CCB00EA30A0 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFFE1274B8CCB00EA30A0 /* NetworkServiceError.swift */; };
 		85DCFFE6274B8D1700EA30A0 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCFFDC274B899A00EA30A0 /* BaseNetworkService.swift */; };
@@ -133,6 +139,11 @@
 		856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesNetworkService.swift; sourceTree = "<group>"; };
 		856DFE3A27438B9900208C56 /* MainContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerPresenter.swift; sourceTree = "<group>"; };
 		85DC001E274BA88700EA30A0 /* MainPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTest.swift; sourceTree = "<group>"; };
+		85DC002D274C36FB00EA30A0 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		85DC0034274C382700EA30A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85DC0038274C385100EA30A0 /* FavoriteDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDish.swift; sourceTree = "<group>"; };
+		85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresentor.swift; sourceTree = "<group>"; };
+		85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDataManager.swift; sourceTree = "<group>"; };
 		85DCFD912745315100EA30A0 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		85DCFD9C27468D1300EA30A0 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
@@ -211,6 +222,7 @@
 				8504B8F127089E060058CD28 /* SceneDelegate.swift */,
 				853E85E42729323E00B56679 /* 📱 Screens */,
 				85DCFDB22748ACC200EA30A0 /* Services */,
+				85DC0029274C353100EA30A0 /* Models */,
 				853E85A12728142A00B56679 /* Core */,
 				85DCFE09274A8CA100EA30A0 /* Components */,
 				853E861927294E4400B56679 /* Extensions */,
@@ -251,6 +263,7 @@
 		853E859F2728141000B56679 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				85DC003C274CD12000EA30A0 /* AuthorizationPresentor.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -366,13 +379,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		853E862C2729610100B56679 /* Models */ = {
+		853E862C2729610100B56679 /* NetworkModels */ = {
 			isa = PBXGroup;
 			children = (
 				853E862D2729614E00B56679 /* Dish.swift */,
 				853E863E27298CF600B56679 /* Category.swift */,
 			);
-			path = Models;
+			path = NetworkModels;
 			sourceTree = "<group>";
 		};
 		853E8635272964CA00B56679 /* NetworkLayer */ = {
@@ -380,7 +393,6 @@
 			children = (
 				853E8636272964EE00B56679 /* CategoriesNetworkService.swift */,
 				856DFE2D2742E98700208C56 /* RecipesNetworkService.swift */,
-				853E862C2729610100B56679 /* Models */,
 				856DFE1E2742E3F500208C56 /* Endpoints.swift */,
 				85DCFFDC274B899A00EA30A0 /* BaseNetworkService.swift */,
 				85DCFFE1274B8CCB00EA30A0 /* NetworkServiceError.swift */,
@@ -463,6 +475,33 @@
 			path = PresenterTest;
 			sourceTree = "<group>";
 		};
+		85DC0029274C353100EA30A0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				85DC0033274C381300EA30A0 /* DataModel */,
+				853E862C2729610100B56679 /* NetworkModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		85DC002C274C361E00EA30A0 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				85DC002D274C36FB00EA30A0 /* UserDataManager.swift */,
+				85DC0048274CFDE400EA30A0 /* DishesDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		85DC0033274C381300EA30A0 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				85DC0034274C382700EA30A0 /* User.swift */,
+				85DC0038274C385100EA30A0 /* FavoriteDish.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		85DCFD9B27468CCE00EA30A0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +513,7 @@
 		85DCFDB22748ACC200EA30A0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				85DC002C274C361E00EA30A0 /* DataManager */,
 				853E8635272964CA00B56679 /* NetworkLayer */,
 			);
 			path = Services;
@@ -724,18 +764,23 @@
 				853E863F27298CF600B56679 /* Category.swift in Sources */,
 				8504B8F027089E060058CD28 /* AppDelegate.swift in Sources */,
 				85DCFFDD274B899A00EA30A0 /* BaseNetworkService.swift in Sources */,
+				85DC0049274CFDE400EA30A0 /* DishesDataManager.swift in Sources */,
 				853E85F6272934D900B56679 /* FavoriteFoodRouter.swift in Sources */,
 				853E85B727281AFC00B56679 /* MainViewController.swift in Sources */,
 				856DFE2E2742E98700208C56 /* RecipesNetworkService.swift in Sources */,
 				85DCFE02274A6A9F00EA30A0 /* BaseTableViewCell.swift in Sources */,
 				856DFE1F2742E3F500208C56 /* Endpoints.swift in Sources */,
+				85DC002E274C36FB00EA30A0 /* UserDataManager.swift in Sources */,
 				85DCFE0B274A8CD800EA30A0 /* TableHeaderView.swift in Sources */,
 				853E86032729369200B56679 /* BaseRouter.swift in Sources */,
+				85DC0035274C382700EA30A0 /* User.swift in Sources */,
 				856DFD93273C317900208C56 /* CategoryCollectionViewCell.swift in Sources */,
 				856DFE3B27438B9900208C56 /* MainContainerPresenter.swift in Sources */,
 				85DCFDD3274A28E100EA30A0 /* DetailPresenter.swift in Sources */,
 				85DCFDEA274A391900EA30A0 /* DishNameCell.swift in Sources */,
+				85DC003D274CD12000EA30A0 /* AuthorizationPresentor.swift in Sources */,
 				853E8637272964EE00B56679 /* CategoriesNetworkService.swift in Sources */,
+				85DC0039274C385100EA30A0 /* FavoriteDish.swift in Sources */,
 				853E862827295EE900B56679 /* MainPresenter.swift in Sources */,
 				85DCFDF2274A3E8F00EA30A0 /* InstructionCell.swift in Sources */,
 				853E861B27294E7700B56679 /* UIImageExtension.swift in Sources */,
@@ -756,7 +801,6 @@
 				85DCFF49274B84B900EA30A0 /* AppDelegate.swift in Sources */,
 				85DCFF6D274B84FE00EA30A0 /* MainViewController.swift in Sources */,
 				85DCFF61274B84CF00EA30A0 /* MainContainerViewController.swift in Sources */,
-				85DCFFD1274B86A200EA30A0 /* CookingRecipes.xcdatamodeld in Sources */,
 				85DCFF55274B84C400EA30A0 /* AssemblyBuilder.swift in Sources */,
 				85DCFF99274B854400EA30A0 /* RecipesNetworkService.swift in Sources */,
 				85DCFFB5274B857500EA30A0 /* BaseTableViewCell.swift in Sources */,
@@ -779,10 +823,12 @@
 				85DCFF71274B850200EA30A0 /* MainPresenter.swift in Sources */,
 				85DCFF5D274B84CB00EA30A0 /* CategoryCollectionViewCell.swift in Sources */,
 				85DCFF7D274B851500EA30A0 /* IngredientCell.swift in Sources */,
+				85DC0043274CEB1A00EA30A0 /* AuthorizationPresentor.swift in Sources */,
 				85DC001F274BA88700EA30A0 /* MainPresenterTest.swift in Sources */,
 				85DCFF69274B84FA00EA30A0 /* DishCell.swift in Sources */,
 				85DCFF65274B84D200EA30A0 /* MainContainerPresenter.swift in Sources */,
 				85DCFF59274B84C800EA30A0 /* MainRouter.swift in Sources */,
+				85DC0040274CEB0C00EA30A0 /* UserDataManager.swift in Sources */,
 				85DCFF89274B852400EA30A0 /* FavoriteFoodRouter.swift in Sources */,
 				85DCFF8D274B853400EA30A0 /* FavoriteFoodViewController.swift in Sources */,
 				85DCFF85274B851C00EA30A0 /* DetailPresenter.swift in Sources */,

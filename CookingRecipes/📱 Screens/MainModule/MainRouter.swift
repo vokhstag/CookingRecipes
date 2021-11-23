@@ -10,18 +10,22 @@ import UIKit
 protocol MainRouterProtocol: BaseRouter {
     func initialViewController()
     func showDetailController(dish: Dish)
+    func showAuthorizationControllerIfNeed()
 }
 
 class MainRouter: MainRouterProtocol {
     var tabBarController: UITabBarController?
     var navigationController: UINavigationController
     var assemblyBuilder: AssemblyBuilderProtocol?
+    private var userDataManager: UserDataManagerProtocol
     init(tabBarController: UITabBarController?,
          navigationController: UINavigationController,
-         assemblyBuilder: AssemblyBuilderProtocol?) {
+         assemblyBuilder: AssemblyBuilderProtocol?,
+         userDataManager: UserDataManagerProtocol) {
         self.tabBarController = tabBarController
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
+        self.userDataManager = userDataManager
     }
     func initialViewController() {
         guard let mainViewController = assemblyBuilder?.createMainController(router: self) else { return }
@@ -33,5 +37,13 @@ class MainRouter: MainRouterProtocol {
     func showDetailController(dish: Dish) {
         guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish) else { return }
         navigationController.pushViewController(detailViewController, animated: true)
+    }
+    func showAuthorizationControllerIfNeed() {
+        guard userDataManager.getActiveUser() == nil else { return }
+        guard let authorizationController =
+                assemblyBuilder?.createAuthorizationController(dataManager: self.userDataManager)
+        else { return }
+        authorizationController.modalPresentationStyle = .fullScreen
+        self.navigationController.present(authorizationController, animated: true)
     }
 }
