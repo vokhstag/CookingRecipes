@@ -9,15 +9,17 @@ import Foundation
 import CoreData
 
 protocol DishesDataManagerProtocol {
-    func saveDish(dish: Dish)
-    func getDishes() -> [FavoriteDish]
+    func saveDish(dish: Dish) -> Bool
+    func getDishes() -> [FavoriteFood]
+    func dishBy(id: String) -> FavoriteFood?
+    func deleteDishBy(id: String) -> Bool
 }
 
 class DishesDataManager {
     // MARK: - Private properties
     private let context = AppDelegate.viewContext
     private let userFetchResult: NSFetchRequest<User> = User.fetchRequest()
-    private let dishFetchResult: NSFetchRequest<FavoriteDish> = FavoriteDish.fetchRequest()
+    private let dishFetchResult: NSFetchRequest<FavoriteFood> = FavoriteFood.fetchRequest()
     private var user: User?
     // MARK: - Constructor
     init() {
@@ -29,8 +31,8 @@ class DishesDataManager {
 }
 // MARK: - SetDishesDataManagerProtocol
 extension DishesDataManager: DishesDataManagerProtocol {
-    func saveDish(dish: Dish) {
-        let favoriteDish = FavoriteDish(context: context)
+    func saveDish(dish: Dish) -> Bool {
+        let favoriteDish = FavoriteFood(context: context)
         favoriteDish.id = dish.id
         favoriteDish.name = dish.name
         favoriteDish.instructions = dish.instructions
@@ -59,9 +61,14 @@ extension DishesDataManager: DishesDataManagerProtocol {
         favoriteDish.measure9 = dish.measure9
         favoriteDish.measure10 = dish.measure10
         favoriteDish.user = user
-        try? context.save()
+        do {
+            try context.save()
+            return true
+        } catch {
+            return false
+        }
     }
-    func getDishes() -> [FavoriteDish] {
+    func getDishes() -> [FavoriteFood] {
         guard let user = user else { return [] }
         let predicate = NSPredicate(format: "user = %@", argumentArray: [user])
         dishFetchResult.predicate = predicate
@@ -71,5 +78,21 @@ extension DishesDataManager: DishesDataManagerProtocol {
         } catch {
             return []
         }
+    }
+    func dishBy(id: String) -> FavoriteFood? {
+        guard let user = user else { return nil }
+        let predicate = NSPredicate(format: "user = %@ && id = %@", argumentArray: [user, id])
+        dishFetchResult.predicate = predicate
+        do {
+            let dishes = try context.fetch(dishFetchResult)
+            return dishes.first
+        } catch {
+            return nil
+        }
+    }
+    func deleteDishBy(id: String) -> Bool {
+        guard let dish = dishBy(id: id) else { return false }
+        context.delete(dish)
+        return true
     }
 }
