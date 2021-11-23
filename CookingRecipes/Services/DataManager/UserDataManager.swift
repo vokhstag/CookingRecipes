@@ -17,8 +17,11 @@ class UserDataManager {
     // MARK: - Private properties
     private let context = AppDelegate.viewContext
     private let fetchResult: NSFetchRequest<User> = User.fetchRequest()
+}
+// MARK: - UserDataManagerProtocol
+extension UserDataManager: UserDataManagerProtocol {
     func getActiveUser() -> User? {
-        let predicate = NSPredicate(format: "isActive = %@", true)
+        let predicate = NSPredicate(format: "isActive = %@", argumentArray: [true])
         fetchResult.predicate = predicate
         let users = try? context.fetch(fetchResult)
         return users?.first

@@ -105,7 +105,6 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     func succes() {
         self.dismiss(animated: true, completion: nil)
     }
-    
     func failure(errorDescription: String) {
         showAlert(message: errorDescription)
     }
