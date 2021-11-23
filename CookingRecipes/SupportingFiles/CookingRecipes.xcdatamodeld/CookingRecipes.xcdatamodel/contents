@@ -28,15 +28,17 @@
         <attribute name="measure10" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="youtube" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteDish" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="category">
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="login" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
-        <relationship name="favoriteDish" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FavoriteDish"/>
+        <relationship name="favoriteDish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteDish" inverseName="user" inverseEntity="FavoriteDish"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="28"/>
-        <element name="FavoriteDish" positionX="159.2578125" positionY="106.1796875" width="128" height="28"/>
+        <element name="FavoriteDish" positionX="159.2578125" positionY="106.1796875" width="128" height="58"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="58"/>
     </elements>
 </model>
