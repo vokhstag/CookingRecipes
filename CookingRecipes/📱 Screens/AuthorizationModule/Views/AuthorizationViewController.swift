@@ -37,6 +37,7 @@ class AuthorizationViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = " Name"
         textField.backgroundColor = .white
+        textField.textContentType = .nickname
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
         return textField
@@ -52,6 +53,7 @@ class AuthorizationViewController: UIViewController {
     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Login"
+        textField.textContentType = .nickname
         textField.backgroundColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
@@ -69,6 +71,7 @@ class AuthorizationViewController: UIViewController {
         textField.placeholder = "Password"
         textField.backgroundColor = .white
         textField.textContentType = .password
+        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
         return textField
@@ -78,6 +81,7 @@ class AuthorizationViewController: UIViewController {
         textField.placeholder = "Confirm Password"
         textField.backgroundColor = .white
         textField.textContentType = .password
+        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
         return textField

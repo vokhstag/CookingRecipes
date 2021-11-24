@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AssemblyBuilderProtocol {
-    func createMainController(router: MainRouterProtocol) -> UIViewController
+    func createMainController(router: MainRouterProtocol, userDataManager: UserDataManagerProtocol) -> UIViewController
     func createFavoriteFoodController(router: FavoriteFoodRouterProtocol,
                                       dataManager: DishesDataManagerProtocol) -> UIViewController
     func createDetailController(dish: Dish,
@@ -21,14 +21,17 @@ protocol AssemblyBuilderProtocol {
 class AssemblyBuilder: AssemblyBuilderProtocol {
     private let categoriesnetworkService = CategoriesNetworkService()
     private let recipesNetworkService = RecipesNetworkService()
-    func createMainController(router: MainRouterProtocol) -> UIViewController {
+    func createMainController(router: MainRouterProtocol,
+                              userDataManager: UserDataManagerProtocol) -> UIViewController {
         let contentViewController = MainViewController()
         let contentPresenter = MainPresenter(view: contentViewController,
                                              networkService: recipesNetworkService,
                                              router: router)
         contentViewController.presenter = contentPresenter
         let view = MainContainerViewController()
-        let presenter = MainContainerPresenter(view: view, network: categoriesnetworkService)
+        let presenter = MainContainerPresenter(view: view,
+                                               network: categoriesnetworkService,
+                                               userDataManager: userDataManager)
         presenter.delegate = contentPresenter
         view.presenter = presenter
         view.contentViewController = contentViewController

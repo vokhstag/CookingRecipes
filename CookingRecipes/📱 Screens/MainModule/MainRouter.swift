@@ -33,7 +33,9 @@ class MainRouter: MainRouterProtocol {
         self.dishesDataManager = dishesDataManager
     }
     func initialViewController() {
-        guard let mainViewController = assemblyBuilder?.createMainController(router: self) else { return }
+        guard let mainViewController = assemblyBuilder?.createMainController(router: self,
+                                                                             userDataManager: userDataManager)
+        else { return }
         mainViewController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage.TabBarIcons.home,
                                                      selectedImage: UIImage.TabBarIcons.homeSelected)
@@ -41,7 +43,8 @@ class MainRouter: MainRouterProtocol {
     }
     func showDetailController(dish: Dish) {
         guard let detailViewController = assemblyBuilder?.createDetailController(dish: dish,
-                                                                                 dataManager: dishesDataManager, router: self)
+                                                                                 dataManager: dishesDataManager,
+                                                                                 router: self)
         else { return }
         navigationController.pushViewController(detailViewController, animated: true)
     }

@@ -43,6 +43,10 @@ class MockMainRouter: MainRouterProtocol {
     func showDetailController(dish: Dish) {
         showDetailControllerCalled = true
     }
+    func showAuthorizationControllerIfNeed() {
+    }
+    func showIngredientController(url: URL?, name: String, measure: String?) {
+    }
 }
 
 class MainPresenterTest: XCTestCase {
@@ -63,8 +67,8 @@ class MainPresenterTest: XCTestCase {
         router = nil
         presenter = nil
     }
-    func teestThatModuleIsNotNil() {
-        //assert
+    func testThatModuleIsNotNil() {
+        // assert
         XCTAssertNotNil(view, "view is nil")
         XCTAssertNotNil(network, "network is nil")
         XCTAssertNotNil(router, "router is nil")
@@ -77,6 +81,14 @@ class MainPresenterTest: XCTestCase {
         presenter.getListOfDishes(url: url)
         // assert
         XCTAssertTrue(view.loadCalled, "view.load() was not called")
+    }
+    func testThatMethodGetListOfDishesCallFailureWhenURLIsNil() {
+        // arranged
+        let url = URL(string: "")
+        // act
+        presenter.getListOfDishes(url: url)
+        // assert
+        XCTAssertNotEqual(view.errorDescription, "")
     }
     func testThatMethodSearchDishesCallsLoadingInView() throws {
         // arranged
@@ -110,11 +122,4 @@ class MainPresenterTest: XCTestCase {
         // assert
         XCTAssertTrue(router.showDetailControllerCalled, "router.showDetailController() war not called")
     }
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -30,11 +30,15 @@ class MainViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         presenter.showAuthorizationViewIfNeed()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
 
 }
@@ -98,10 +102,6 @@ extension MainViewController: MainViewProtocol {
 private extension MainViewController {
     func setup() {
         setupUI()
-     //   self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
-//        (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize
-//            = UICollectionViewFlowLayout.automaticSize
     }
     func setupUI() {
         NSLayoutConstraint.activate([
