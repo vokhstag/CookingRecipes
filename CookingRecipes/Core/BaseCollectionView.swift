@@ -28,7 +28,6 @@ private extension BaseCollectionView {
         activityIndicator.color = .brandColor
         activityIndicator.hidesWhenStopped = true
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        print(self.bounds)
         NSLayoutConstraint.activate([
             activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)

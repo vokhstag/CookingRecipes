@@ -66,7 +66,6 @@ class MainContainerViewController: UIViewController {
     lazy var helloLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Hello" // TODO: - Нужно добавить имя из CoreData
         self.view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -169,6 +168,7 @@ private extension MainContainerViewController {
             helloLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
             helloLabel.trailingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 10)
         ])
+        helloLabel.text = "Hello \(presenter.getUserName())"
         NSLayoutConstraint.activate([
             readyToCookLabel.topAnchor.constraint(equalTo: self.helloLabel.bottomAnchor),
             readyToCookLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),

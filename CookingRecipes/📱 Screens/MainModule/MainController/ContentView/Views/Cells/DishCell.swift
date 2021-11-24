@@ -24,7 +24,6 @@ class DishCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .yellow
         self.addSubview(imageView)
         return imageView
     }()
@@ -58,6 +57,9 @@ class DishCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.layer.cornerRadius = imageView.frame.width/2
+    }
+    override func prepareForReuse() {
+        self.imageView.image = nil
     }
     func configure(name: String, country: String, imageURL: URL?) {
         dishNameLabel.text = name

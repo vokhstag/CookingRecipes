@@ -22,6 +22,7 @@ protocol MainContainerPresenterType {
     var categories: [Category] { get }
     func getCategories()
     func searchByName(text: String)
+    func getUserName() -> String
 }
 
 class MainContainerPresenter: MainContainerPresenterType {
@@ -42,9 +43,14 @@ class MainContainerPresenter: MainContainerPresenterType {
     private var network: CategoriesNetworkServiceProtocol
     private let endpoint = Endpoints.categories
     private let defaults = UserDefaults.standard
-    init(view: MainContainerViewProtocol?, network: CategoriesNetworkServiceProtocol) {
+    private let userDataManager: UserDataManagerProtocol
+    // MARK: - Constructor
+    init(view: MainContainerViewProtocol?,
+         network: CategoriesNetworkServiceProtocol,
+         userDataManager: UserDataManagerProtocol) {
         self.view = view
         self.network = network
+        self.userDataManager = userDataManager
     }
     func getCategories() {
         guard let url = endpoint.url else {
@@ -56,9 +62,11 @@ class MainContainerPresenter: MainContainerPresenterType {
             switch result {
             case .success(let categories):
                 self.categories = categories
-                let name = self.defaults.string(forKey: Keys.kSelectedCategory) ?? categories[0].name
-                self.selectedCategoryName = name
-                self.delegate?.update(with: name)
+                if !categories.isEmpty {
+                    let name = self.defaults.string(forKey: Keys.kSelectedCategory) ?? categories[0].name
+                    self.selectedCategoryName = name
+                    self.delegate?.update(with: name)
+                }
                 self.view?.succes()
             case .failure(let error):
                 self.view?.failure(errorDescription: error.message)
@@ -67,5 +75,8 @@ class MainContainerPresenter: MainContainerPresenterType {
     }
     func searchByName(text: String) {
         self.delegate?.update(withSearchText: text)
+    }
+    func getUserName() -> String {
+        return userDataManager.getActiveUser()?.name ?? ""
     }
 }
