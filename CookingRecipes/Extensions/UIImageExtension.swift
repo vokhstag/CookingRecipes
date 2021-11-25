@@ -8,6 +8,11 @@
 import UIKit
 
 extension UIImage {
+    enum Images {
+        static var backroundImage: UIImage {
+            return UIImage(named: "backroundImage")!
+        }
+    }
     enum Icons {
         static var loupe: UIImage {
             return UIImage(named: "loupe")!

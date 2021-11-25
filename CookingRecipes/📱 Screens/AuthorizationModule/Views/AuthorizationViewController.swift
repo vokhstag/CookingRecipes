@@ -21,7 +21,15 @@ class AuthorizationViewController: UIViewController {
     }()
     lazy var scrollContentView: UIView = {
         let view = UIView()
+     //  view = UIImage.Images.backroundImage
         self.scrollView.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var backgroundImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage.Images.backroundImage
+        self.scrollContentView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -97,13 +105,19 @@ class AuthorizationViewController: UIViewController {
         button.addTarget(self, action: #selector(registrationTapped), for: .touchUpInside)
         return button
     }()
+    // MARK: - Constructor
+    deinit {
+        removeKeyboardNotifications()
+    }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        registerForKeyboardNotifications()
     }
 }
+
 // MARK: - AuthorizationViewProtocol
 extension AuthorizationViewController: AuthorizationViewProtocol {
     func succes() {
@@ -113,13 +127,19 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
         showAlert(message: errorDescription)
     }
 }
+
 // MARK: Setup
 private extension AuthorizationViewController {
     func setup() {
         setupScrollView()
         setupStackView()
         setupSubviews()
+        addTapRecognizerAtView()
         self.navigationController?.navigationBar.isHidden = true
+    }
+    func addTapRecognizerAtView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     func setupStackView() {
         stackView.axis = .vertical
@@ -160,6 +180,12 @@ private extension AuthorizationViewController {
         let xCenter = scrollContentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         yCenter.priority = UILayoutPriority(rawValue: 750)
         xCenter.priority = UILayoutPriority(rawValue: 750)
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
     }
     func setupSubviews() {
         NSLayoutConstraint.activate([
@@ -180,6 +206,7 @@ private extension AuthorizationViewController {
         ])
     }
 }
+
 // MARK: - Private methods
 private extension AuthorizationViewController {
     func showAlert(message: String) {
@@ -188,6 +215,21 @@ private extension AuthorizationViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    // MARK: - Actions
     @objc func registrationTapped() {
         guard let login = loginTextField.text, login != "" else {
             showAlert(message: "login не может быть пустым")
@@ -206,5 +248,20 @@ private extension AuthorizationViewController {
             return
         }
         presenter.createNewUser(name: name, login: login, password: password)
+    }
+    @objc func kbWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let kbSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+        guard let keyboardSize = kbSize as? CGRect else { return }
+        scrollView.contentOffset = CGPoint(x: 0, y: keyboardSize.height)
+    }
+    @objc func kbWillHide() {
+        scrollView.contentOffset = CGPoint.zero
+    }
+    @objc func hideKeyboard() {
+        nameTextField.resignFirstResponder()
+        loginTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
 }
