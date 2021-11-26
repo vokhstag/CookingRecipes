@@ -28,6 +28,11 @@
 		853E862E2729614E00B56679 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E862D2729614E00B56679 /* Dish.swift */; };
 		853E8637272964EE00B56679 /* CategoriesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E8636272964EE00B56679 /* CategoriesNetworkService.swift */; };
 		853E863F27298CF600B56679 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E863E27298CF600B56679 /* Category.swift */; };
+		855BE2D327511E7900F51E1B /* Lora-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 855BE2D227511E7900F51E1B /* Lora-VariableFont_wght.ttf */; };
+		855BE2D727511EE600F51E1B /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE2D627511EE600F51E1B /* UIFontExtension.swift */; };
+		855BE2DB275120AE00F51E1B /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 855BE2DA275120AE00F51E1B /* Lora-Bold.ttf */; };
+		855BE2DF2751223400F51E1B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 855BE2DE2751223400F51E1B /* Nunito-Bold.ttf */; };
+		855BE2E327512B0D00F51E1B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 855BE2E227512B0C00F51E1B /* Nunito-Regular.ttf */; };
 		856DFD93273C317900208C56 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */; };
 		856DFE172742A8EB00208C56 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE162742A8EB00208C56 /* MainContainerViewController.swift */; };
 		856DFE1F2742E3F500208C56 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE1E2742E3F500208C56 /* Endpoints.swift */; };
@@ -144,6 +149,11 @@
 		853E862D2729614E00B56679 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		853E8636272964EE00B56679 /* CategoriesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworkService.swift; sourceTree = "<group>"; };
 		853E863E27298CF600B56679 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		855BE2D227511E7900F51E1B /* Lora-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		855BE2D627511EE600F51E1B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		855BE2DA275120AE00F51E1B /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
+		855BE2DE2751223400F51E1B /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		855BE2E227512B0C00F51E1B /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		856DFE162742A8EB00208C56 /* MainContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		856DFE1E2742E3F500208C56 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -381,9 +391,11 @@
 		853E861927294E4400B56679 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				855BE2D127511E5E00F51E1B /* Fonts */,
 				853E861A27294E7700B56679 /* UIImageExtension.swift */,
 				853E86222729595F00B56679 /* UIColorExtension.swift */,
 				85DCFD962745537C00EA30A0 /* UIImageViewExtension.swift */,
+				855BE2D627511EE600F51E1B /* UIFontExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +419,17 @@
 				85DCFFE1274B8CCB00EA30A0 /* NetworkServiceError.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		855BE2D127511E5E00F51E1B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				855BE2DE2751223400F51E1B /* Nunito-Bold.ttf */,
+				855BE2E227512B0C00F51E1B /* Nunito-Regular.ttf */,
+				855BE2DA275120AE00F51E1B /* Lora-Bold.ttf */,
+				855BE2D227511E7900F51E1B /* Lora-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		856DFD91273C314A00208C56 /* Cells */ = {
@@ -715,8 +738,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855BE2E327512B0D00F51E1B /* Nunito-Regular.ttf in Resources */,
 				8504B8FF27089E090058CD28 /* LaunchScreen.storyboard in Resources */,
+				855BE2DF2751223400F51E1B /* Nunito-Bold.ttf in Resources */,
+				855BE2DB275120AE00F51E1B /* Lora-Bold.ttf in Resources */,
 				8504B8FC27089E090058CD28 /* Assets.xcassets in Resources */,
+				855BE2D327511E7900F51E1B /* Lora-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +837,7 @@
 				85DCFDAE2748ABDB00EA30A0 /* Constants.swift in Sources */,
 				85DA19E4274D56E70073E75F /* IngredientViewController.swift in Sources */,
 				85DCFD9D27468D1300EA30A0 /* DishCell.swift in Sources */,
+				855BE2D727511EE600F51E1B /* UIFontExtension.swift in Sources */,
 				85DCFD972745537C00EA30A0 /* UIImageViewExtension.swift in Sources */,
 				853E85EE2729331200B56679 /* MainRouter.swift in Sources */,
 				8504B8F427089E060058CD28 /* AuthorizationViewController.swift in Sources */,
