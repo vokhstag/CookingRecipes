@@ -212,50 +212,50 @@ private extension AuthorizationViewController {
     func setupUI() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(greaterThanOrEqualTo: funCookingLabel.bottomAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             nameLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             nameTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
             loginLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
-            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            loginLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loginLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             loginLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         NSLayoutConstraint.activate([
             loginTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor),
-            loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             loginTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
             passwordLabel.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 20),
-            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             passwordLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         NSLayoutConstraint.activate([
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
             confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            confirmPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            confirmPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            confirmPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            confirmPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             confirmPasswordLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         NSLayoutConstraint.activate([
             confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor),
-            confirmPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            confirmPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
