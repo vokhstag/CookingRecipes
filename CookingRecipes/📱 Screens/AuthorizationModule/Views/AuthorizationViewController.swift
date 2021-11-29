@@ -15,95 +15,143 @@ class AuthorizationViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         self.view.addSubview(scrollView)
-        scrollView.backgroundColor = #colorLiteral(red: 0.8618097175, green: 0.8631474743, blue: 0.8241919949, alpha: 1)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     lazy var scrollContentView: UIView = {
         let view = UIView()
+     //  view = UIImage.Images.backroundImage
         self.scrollView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    lazy var backgroundImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage.Images.backroundImage
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    lazy var funCookingLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.CustomFonts.title1
+        label.text = "Fun Cooking"
+        label.textColor = .white
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollContentView.addSubview(label)
+        return label
+    }()
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.CustomFonts.subhead1
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Name"
         label.numberOfLines = 1
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Name"
+        textField.font = UIFont.CustomFonts.subhead2
+        textField.textContentType = .password
         textField.backgroundColor = .white
-        textField.textContentType = .nickname
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var loginLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.CustomFonts.subhead1
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Login"
         label.numberOfLines = 1
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Login"
+        textField.font = UIFont.CustomFonts.subhead2
         textField.textContentType = .nickname
         textField.backgroundColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.font = UIFont.CustomFonts.subhead1
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Password"
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password"
+        textField.placeholder = " Password"
+        textField.font = UIFont.CustomFonts.subhead2
         textField.backgroundColor = .white
         textField.textContentType = .password
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
+    }()
+    lazy var confirmPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.CustomFonts.subhead1
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Confirm Password"
+        self.scrollContentView.addSubview(label)
+        return label
     }()
     lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Confirm Password"
+        textField.placeholder = " Confirm Password"
+        textField.font = UIFont.CustomFonts.subhead2
         textField.backgroundColor = .white
         textField.textContentType = .password
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var logInButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Вход", for: .normal)
-        button.layer.cornerRadius = 10
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        button.setTitle("Sign Up", for: .normal)
+        button.layer.cornerRadius = 20
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.CustomFonts.title2
+        button.backgroundColor = .brandColor
         button.translatesAutoresizingMaskIntoConstraints = false
         self.scrollContentView.addSubview(button)
         button.addTarget(self, action: #selector(registrationTapped), for: .touchUpInside)
         return button
     }()
+    // MARK: - Constructor
+    deinit {
+        removeKeyboardNotifications()
+    }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        registerForKeyboardNotifications()
     }
 }
+
 // MARK: - AuthorizationViewProtocol
 extension AuthorizationViewController: AuthorizationViewProtocol {
     func succes() {
@@ -113,34 +161,25 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
         showAlert(message: errorDescription)
     }
 }
+
 // MARK: Setup
 private extension AuthorizationViewController {
     func setup() {
+        setupBackgroundImage()
         setupScrollView()
-        setupStackView()
-        setupSubviews()
+        setupfunCookingLabel()
+        setupUI()
+        setupSignUpButton()
+        addTapRecognizerAtView()
         self.navigationController?.navigationBar.isHidden = true
     }
-    func setupStackView() {
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 10
-        scrollContentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(loginLabel)
-        stackView.addArrangedSubview(loginTextField)
-        stackView.addArrangedSubview(passwordLabel)
-        stackView.addArrangedSubview(passwordTextField)
-        stackView.addArrangedSubview(confirmPasswordTextField)
-        let margins = scrollContentView.layoutMarginsGuide
+    func setupBackgroundImage() {
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: scrollContentView.centerYAnchor, constant: -200)
-            ])
+            backgroundImageView.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
     }
     func setupScrollView() {
         NSLayoutConstraint.activate([
@@ -154,32 +193,87 @@ private extension AuthorizationViewController {
             scrollContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             scrollContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             scrollContentView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-            scrollContentView.heightAnchor.constraint(greaterThanOrEqualTo: self.view.heightAnchor)
+            scrollContentView.heightAnchor.constraint(greaterThanOrEqualTo: self.scrollView.heightAnchor)
         ])
         let yCenter = scrollContentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
         let xCenter = scrollContentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         yCenter.priority = UILayoutPriority(rawValue: 750)
         xCenter.priority = UILayoutPriority(rawValue: 750)
+        yCenter.isActive = true
+        xCenter.isActive = true
     }
-    func setupSubviews() {
+    func setupfunCookingLabel() {
         NSLayoutConstraint.activate([
-            logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
-            logInButton.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 40),
-            logInButton.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor, constant: -40),
-            logInButton.heightAnchor.constraint(equalToConstant: 48),
-            logInButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -400)
+            funCookingLabel.topAnchor.constraint(equalTo: scrollContentView.topAnchor, constant: 90),
+            funCookingLabel.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 12),
+            funCookingLabel.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor, constant: -12)
+        ])
+    }
+    func setupUI() {
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(greaterThanOrEqualTo: funCookingLabel.bottomAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            nameLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: 30),
-            nameTextField.heightAnchor.constraint(equalToConstant: 48),
-            loginLabel.heightAnchor.constraint(equalToConstant: 30),
-            passwordLabel.heightAnchor.constraint(equalToConstant: 30),
-            loginTextField.heightAnchor.constraint(equalToConstant: 48),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 48),
-            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 48)
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            nameTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
+        NSLayoutConstraint.activate([
+            loginLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loginLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            loginLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            loginTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor),
+            loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            loginTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            passwordLabel.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 20),
+            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            passwordLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            confirmPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            confirmPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            confirmPasswordLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    func setupSignUpButton() {
+        NSLayoutConstraint.activate([
+            logInButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 40),
+            logInButton.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 60),
+            logInButton.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor, constant: -60),
+            logInButton.heightAnchor.constraint(equalToConstant: 40),
+            logInButton.bottomAnchor.constraint(equalTo: scrollContentView.bottomAnchor, constant: -80)
+        ])
+    }
+    func addTapRecognizerAtView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
 }
+
 // MARK: - Private methods
 private extension AuthorizationViewController {
     func showAlert(message: String) {
@@ -188,6 +282,21 @@ private extension AuthorizationViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    // MARK: - Actions
     @objc func registrationTapped() {
         guard let login = loginTextField.text, login != "" else {
             showAlert(message: "login не может быть пустым")
@@ -206,5 +315,22 @@ private extension AuthorizationViewController {
             return
         }
         presenter.createNewUser(name: name, login: login, password: password)
+    }
+    @objc func kbWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let kbSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+        guard let keyboardSize = kbSize as? CGRect else { return }
+        if scrollView.contentOffset == CGPoint.zero {
+            scrollView.contentOffset = CGPoint(x: 0, y: (keyboardSize.height - 70))
+        }
+    }
+    @objc func kbWillHide() {
+        scrollView.contentOffset = CGPoint.zero
+    }
+    @objc func hideKeyboard() {
+        nameTextField.resignFirstResponder()
+        loginTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
 }

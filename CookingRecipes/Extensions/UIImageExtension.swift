@@ -8,6 +8,11 @@
 import UIKit
 
 extension UIImage {
+    enum Images {
+        static var backroundImage: UIImage {
+            return UIImage(named: "backroundImage")!
+        }
+    }
     enum Icons {
         static var loupe: UIImage {
             return UIImage(named: "loupe")!
@@ -18,16 +23,16 @@ extension UIImage {
     }
     enum TabBarIcons {
         static var home: UIImage {
-            return UIImage(named: "Home")!
+            return UIImage(named: "Home") ?? UIImage()
         }
         static var bookmark: UIImage {
-            return UIImage(named: "Bookmark")!
+            return UIImage(named: "Bookmark") ?? UIImage()
         }
         static var homeSelected: UIImage {
-            return UIImage(named: "HomeSelected")!
+            return UIImage(named: "HomeSelected") ?? UIImage()
         }
         static var bookmarkSelected: UIImage {
-            return UIImage(named: "BookmarkSelected")!
+            return UIImage(named: "BookmarkSelected") ?? UIImage()
         }
     }
 }

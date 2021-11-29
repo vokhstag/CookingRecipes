@@ -41,8 +41,10 @@ class MockCategoriesNetworkWithErrorComplition: CategoriesNetworkServiceProtocol
     }
 }
 class MockUserDataManager: UserDataManagerProtocol {
+    var isGetActiveUserCalled = false
     func getActiveUser() -> User? {
-        nil
+        isGetActiveUserCalled = true
+        return nil
     }
     func createUser(name: String, login: String, password: String) -> Bool {
         true
