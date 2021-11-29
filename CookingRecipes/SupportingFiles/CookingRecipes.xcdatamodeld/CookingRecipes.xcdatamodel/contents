@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteFood" representedClassName=".FavoriteFood" syncable="YES" codeGenerationType="category">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="ingredient1" optional="YES" attributeType="String"/>
+        <attribute name="ingredient2" optional="YES" attributeType="String"/>
+        <attribute name="ingredient3" optional="YES" attributeType="String"/>
+        <attribute name="ingredient4" optional="YES" attributeType="String"/>
+        <attribute name="ingredient5" optional="YES" attributeType="String"/>
+        <attribute name="ingredient6" optional="YES" attributeType="String"/>
+        <attribute name="ingredient7" optional="YES" attributeType="String"/>
+        <attribute name="ingredient8" optional="YES" attributeType="String"/>
+        <attribute name="ingredient9" optional="YES" attributeType="String"/>
+        <attribute name="ingredient10" optional="YES" attributeType="String"/>
+        <attribute name="instructions" optional="YES" attributeType="String"/>
+        <attribute name="measure1" optional="YES" attributeType="String"/>
+        <attribute name="measure2" optional="YES" attributeType="String"/>
+        <attribute name="measure3" optional="YES" attributeType="String"/>
+        <attribute name="measure4" optional="YES" attributeType="String"/>
+        <attribute name="measure5" optional="YES" attributeType="String"/>
+        <attribute name="measure6" optional="YES" attributeType="String"/>
+        <attribute name="measure7" optional="YES" attributeType="String"/>
+        <attribute name="measure8" optional="YES" attributeType="String"/>
+        <attribute name="measure9" optional="YES" attributeType="String"/>
+        <attribute name="measure10" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="youtube" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteDish" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES" codeGenerationType="category">
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="login" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <relationship name="favoriteDish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteFood" inverseName="user" inverseEntity="FavoriteFood"/>
+    </entity>
+    <elements>
+        <element name="FavoriteFood" positionX="189.63671875" positionY="-285.2421875" width="128" height="463"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="118"/>
+    </elements>
+</model>

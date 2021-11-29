@@ -11,15 +11,17 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setup()
         return true
     }
 
     // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
@@ -43,6 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    static var persistentContainer: NSPersistentContainer? {
+        return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    }
+    static var viewContext: NSManagedObjectContext {
+        return persistentContainer!.viewContext
+    }
 
     // MARK: - Core Data Saving support
 
@@ -58,4 +66,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+// MARK: - Setup 🛠
+private extension AppDelegate {
+    func setup() {
+        setupTabBar()
+    }
+    func setupTabBar() {
+        UITabBar.appearance().tintColor = .brandColor
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().unselectedItemTintColor = .gray
+        UITabBar.appearance().barTintColor = .brandWhite
+    }
 }

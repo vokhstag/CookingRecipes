@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BaseNetworkService",
+        "repositoryURL": "https://github.com/vokhstag/BaseNetworkService.git",
+        "state": {
+          "branch": "main",
+          "revision": "39d150388e883e4165e45edc984e384efa895083",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
