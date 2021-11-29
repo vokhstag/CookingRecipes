@@ -50,6 +50,7 @@ class AuthorizationViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Name"
         label.numberOfLines = 1
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var nameTextField: UITextField = {
@@ -60,6 +61,7 @@ class AuthorizationViewController: UIViewController {
         textField.backgroundColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var loginLabel: UILabel = {
@@ -69,6 +71,7 @@ class AuthorizationViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Login"
         label.numberOfLines = 1
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var loginTextField: UITextField = {
@@ -79,6 +82,7 @@ class AuthorizationViewController: UIViewController {
         textField.backgroundColor = .white
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var passwordLabel: UILabel = {
@@ -87,6 +91,7 @@ class AuthorizationViewController: UIViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Password"
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var passwordTextField: UITextField = {
@@ -98,6 +103,7 @@ class AuthorizationViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var confirmPasswordLabel: UILabel = {
@@ -106,6 +112,7 @@ class AuthorizationViewController: UIViewController {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Confirm Password"
+        self.scrollContentView.addSubview(label)
         return label
     }()
     lazy var confirmPasswordTextField: UITextField = {
@@ -117,6 +124,7 @@ class AuthorizationViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
+        self.scrollContentView.addSubview(textField)
         return textField
     }()
     lazy var logInButton: UIButton = {
@@ -160,7 +168,7 @@ private extension AuthorizationViewController {
         setupBackgroundImage()
         setupScrollView()
         setupfunCookingLabel()
-        setupStackView()
+        setupUI()
         setupSignUpButton()
         addTapRecognizerAtView()
         self.navigationController?.navigationBar.isHidden = true
@@ -201,41 +209,59 @@ private extension AuthorizationViewController {
             funCookingLabel.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor, constant: -12)
         ])
     }
-    func setupStackView() {
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = 0
-        scrollContentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(loginLabel)
-        stackView.addArrangedSubview(loginTextField)
-        stackView.addArrangedSubview(passwordLabel)
-        stackView.addArrangedSubview(passwordTextField)
-        stackView.addArrangedSubview(confirmPasswordLabel)
-        stackView.addArrangedSubview(confirmPasswordTextField)
-        let margins = scrollContentView.layoutMarginsGuide
+    func setupUI() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(greaterThanOrEqualTo: funCookingLabel.bottomAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -20)
-            ])
+            nameLabel.topAnchor.constraint(greaterThanOrEqualTo: funCookingLabel.bottomAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: 30),
-            nameTextField.heightAnchor.constraint(equalToConstant: 40),
-            loginLabel.heightAnchor.constraint(equalToConstant: 30),
-            passwordLabel.heightAnchor.constraint(equalToConstant: 30),
-            loginTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            confirmPasswordLabel.heightAnchor.constraint(equalToConstant: 30),
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            loginLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            loginLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            loginTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor),
+            loginTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            loginTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            passwordLabel.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 20),
+            passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            passwordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            confirmPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            confirmPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            confirmPasswordLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     func setupSignUpButton() {
         NSLayoutConstraint.activate([
-            logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40),
+            logInButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 40),
             logInButton.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor, constant: 60),
             logInButton.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor, constant: -60),
             logInButton.heightAnchor.constraint(equalToConstant: 40),
