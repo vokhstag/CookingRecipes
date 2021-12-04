@@ -63,7 +63,9 @@ extension DetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DishNameCell.identifier,
                                                            for: indexPath) as? DishNameCell
             else { return UITableViewCell() }
-            cell.configure(url: URL(string: data.imageUrl ?? ""), name: data.name, country: data.country)
+            let imageURL = URL(string: data.imageUrl ?? "")
+            let videoURL = URL(string: data.youtube ?? "")
+            cell.configure(url: imageURL, videoURL: videoURL, name: data.name, country: data.country)
             return cell
         case 1:
             if data.instructions == nil {
@@ -73,7 +75,6 @@ extension DetailViewController: UITableViewDataSource {
                                                            for: indexPath) as? InstructionCell
             else {
                 return UITableViewCell()
-                
             }
             cell.configure(with: data.instructions ?? "")
             return cell

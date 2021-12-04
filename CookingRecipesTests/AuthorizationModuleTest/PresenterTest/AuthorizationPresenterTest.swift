@@ -15,7 +15,6 @@ class MockAuthorizationView: AuthorizationViewProtocol {
     func succes() {
         succesCalled = true
     }
-    
     func failure(errorDescription: String) {
         failureCalled = true
     }
