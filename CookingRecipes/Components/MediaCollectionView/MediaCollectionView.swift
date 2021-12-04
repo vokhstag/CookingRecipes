@@ -18,7 +18,6 @@ class MediaCollectionView: UIView {
     // MARK: - UI
     lazy var mediaCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.layoutCollection)
-        
         self.addSubview(collectionView)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
@@ -51,17 +50,30 @@ class MediaCollectionView: UIView {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.updatePageControll()
+                self?.mediaCollectionView.reloadData()
             }
         }
     }
     var collectionViewTapped: (() -> Void)?
     var collectionViewTappedWithIndex: ((Int) -> Void)?
-
+    // MARK: - Constructor
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    // MARK: - Lifecycle
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutSetup()
+    }
 }
 // MARK: - UICollectionView DataSource
 extension MediaCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(media?.count)
         return media?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -85,10 +97,11 @@ extension MediaCollectionView: UICollectionViewDataSource {
 }
 // MARK: - UICollectionViewDelegate
 extension MediaCollectionView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         pageControll.currentPage = indexPath.row
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let _ = collectionView.cellForItem(at: indexPath) as? ImageCell {
             collectionViewTapped?()
@@ -96,7 +109,6 @@ extension MediaCollectionView: UICollectionViewDelegate {
         }
     }
 }
-    
 // MARK: - Setup
 private extension MediaCollectionView {
     func setup() {
@@ -107,9 +119,39 @@ private extension MediaCollectionView {
             mediaCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    func setupPageControll() {
+        addSubview(gradientView)
+        addSubview(pageControll)
+        NSLayoutConstraint.activate([
+            gradientView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            gradientView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            gradientView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            pageControll.bottomAnchor.constraint(equalTo: bottomAnchor),
+            pageControll.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pageControll.widthAnchor.constraint(equalTo: widthAnchor)
+        ])
+    }
     func updatePageControll() {
+        setupPageControll()
         pageControll.numberOfPages = media?.count ?? 1
         pageControll.hidesForSinglePage = true
         gradientView.isHidden = pageControll.isHidden
+    }
+    func layoutSetup() {
+        layoutCollection.minimumLineSpacing = 0
+        mediaCollectionView.isPagingEnabled = false
+        layoutCollection.scrollDirection = .horizontal
+        mediaCollectionView.layoutIfNeeded()
+        mediaCollectionView.clipsToBounds = true
+        mediaCollectionView.collectionViewLayout = layoutCollection
+        let itemSize = mediaCollectionView.bounds.size
+        layoutCollection.itemSize = itemSize
+
+        mediaCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+        mediaCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        mediaCollectionView.reloadData()
     }
 }
