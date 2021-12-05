@@ -9,8 +9,8 @@ import UIKit
 
 class MediaCollectionView: UIView {
     // MARK: - Private properties
-    private lazy var layoutCollection: UICollectionViewFlowLayout = {
-        let layoutCollection = UICollectionViewFlowLayout()
+    private lazy var layoutCollection: WLCollectionViewLayout = {
+        let layoutCollection = WLCollectionViewLayout()
         layoutCollection.minimumLineSpacing = 0
         layoutCollection.scrollDirection = .horizontal
         return layoutCollection

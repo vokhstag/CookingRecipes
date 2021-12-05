@@ -63,6 +63,7 @@ class DishNameCell: UITableViewCell {
 // MARK: - Setup
 private extension DishNameCell {
     func setup() {
+        self.layoutIfNeeded()
         setupUI()
         self.backgroundColor = .clear
         self.selectionStyle = .none
