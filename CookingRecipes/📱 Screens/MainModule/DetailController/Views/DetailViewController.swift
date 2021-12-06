@@ -64,7 +64,7 @@ extension DetailViewController: UITableViewDataSource {
                                                            for: indexPath) as? DishNameCell
             else { return UITableViewCell() }
             let imageURL = URL(string: data.imageUrl ?? "")
-            let videoURL = URL(string: data.youtube ?? "")
+            let videoURL = data.getVideoURL()
             cell.configure(url: imageURL, videoURL: videoURL, name: data.name, country: data.country)
             return cell
         case 1:

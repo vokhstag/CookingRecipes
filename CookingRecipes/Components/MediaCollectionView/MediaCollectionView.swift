@@ -89,7 +89,7 @@ extension MediaCollectionView: UICollectionViewDataSource {
             return cell
         case 1:
             guard let cell = videoCell else { return UICollectionViewCell() }
-            // Setup
+            cell.configure(url: media?[indexPath.row])
             return cell
         default: return UICollectionViewCell()
         }

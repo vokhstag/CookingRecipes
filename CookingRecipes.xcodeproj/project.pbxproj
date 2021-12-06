@@ -42,6 +42,13 @@
 		855BE371275B886000F51E1B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE370275B886000F51E1B /* ImageCell.swift */; };
 		855BE377275B9D2900F51E1B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE376275B9D2900F51E1B /* VideoCell.swift */; };
 		855BE381275CC75400F51E1B /* WLCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE380275CC75400F51E1B /* WLCollectionViewLayout.swift */; };
+		855BE384275CCFE600F51E1B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE370275B886000F51E1B /* ImageCell.swift */; };
+		855BE387275CCFE900F51E1B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE376275B9D2900F51E1B /* VideoCell.swift */; };
+		855BE38A275CCFEC00F51E1B /* MediaCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE369275B85D900F51E1B /* MediaCollectionView.swift */; };
+		855BE38D275CCFF000F51E1B /* WLCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE380275CC75400F51E1B /* WLCollectionViewLayout.swift */; };
+		855BE390275CD01400F51E1B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE364275B6FA100F51E1B /* GradientView.swift */; };
+		855BE396275CD57D00F51E1B /* FavoriteFoodPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE395275CD57D00F51E1B /* FavoriteFoodPresenterTest.swift */; };
+		855BE39C275D061800F51E1B /* FavoriteFoodRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BE39B275D061800F51E1B /* FavoriteFoodRouterTest.swift */; };
 		856DFD93273C317900208C56 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */; };
 		856DFE172742A8EB00208C56 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE162742A8EB00208C56 /* MainContainerViewController.swift */; };
 		856DFE1F2742E3F500208C56 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856DFE1E2742E3F500208C56 /* Endpoints.swift */; };
@@ -171,6 +178,8 @@
 		855BE370275B886000F51E1B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		855BE376275B9D2900F51E1B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		855BE380275CC75400F51E1B /* WLCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLCollectionViewLayout.swift; sourceTree = "<group>"; };
+		855BE395275CD57D00F51E1B /* FavoriteFoodPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodPresenterTest.swift; sourceTree = "<group>"; };
+		855BE39B275D061800F51E1B /* FavoriteFoodRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodRouterTest.swift; sourceTree = "<group>"; };
 		856DFD92273C317900208C56 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		856DFE162742A8EB00208C56 /* MainContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		856DFE1E2742E3F500208C56 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -278,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				85DC001A274BA79200EA30A0 /* MainModuleTest */,
+				855BE393275CD53600F51E1B /* FavoriteFoodModuleTest */,
 				855BE32027550D2E00F51E1B /* AuthorizationModuleTest */,
 				8504B90927089E090058CD28 /* CookingRecipesTests.swift */,
 				8504B90B27089E090058CD28 /* Info.plist */,
@@ -499,6 +509,23 @@
 				855BE376275B9D2900F51E1B /* VideoCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		855BE393275CD53600F51E1B /* FavoriteFoodModuleTest */ = {
+			isa = PBXGroup;
+			children = (
+				855BE39B275D061800F51E1B /* FavoriteFoodRouterTest.swift */,
+				855BE394275CD55F00F51E1B /* PresennterTest */,
+			);
+			path = FavoriteFoodModuleTest;
+			sourceTree = "<group>";
+		};
+		855BE394275CD55F00F51E1B /* PresennterTest */ = {
+			isa = PBXGroup;
+			children = (
+				855BE395275CD57D00F51E1B /* FavoriteFoodPresenterTest.swift */,
+			);
+			path = PresennterTest;
 			sourceTree = "<group>";
 		};
 		856DFD91273C314A00208C56 /* Cells */ = {
@@ -956,7 +983,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855BE38A275CCFEC00F51E1B /* MediaCollectionView.swift in Sources */,
 				85DCFFB9274B858700EA30A0 /* TableHeaderView.swift in Sources */,
+				855BE390275CD01400F51E1B /* GradientView.swift in Sources */,
+				855BE39C275D061800F51E1B /* FavoriteFoodRouterTest.swift in Sources */,
 				85DA19FD274E27A90073E75F /* FavoriteDish.swift in Sources */,
 				85DA1A06274E32120073E75F /* MainContainerPresenterTest.swift in Sources */,
 				85DCFFEA274B8D1A00EA30A0 /* NetworkServiceError.swift in Sources */,
@@ -966,6 +996,7 @@
 				855BE32D275515E300F51E1B /* MainRouterTest.swift in Sources */,
 				85DCFF61274B84CF00EA30A0 /* MainContainerViewController.swift in Sources */,
 				85DCFF55274B84C400EA30A0 /* AssemblyBuilder.swift in Sources */,
+				855BE38D275CCFF000F51E1B /* WLCollectionViewLayout.swift in Sources */,
 				85DCFF99274B854400EA30A0 /* RecipesNetworkService.swift in Sources */,
 				85DCFFB5274B857500EA30A0 /* BaseTableViewCell.swift in Sources */,
 				85DA1A00274E27F20073E75F /* CookingRecipes.xcdatamodeld in Sources */,
@@ -979,6 +1010,7 @@
 				85DA19EB274D58680073E75F /* IngredientPresenter.swift in Sources */,
 				85DCFF79274B851200EA30A0 /* InstructionCell.swift in Sources */,
 				85DA19F2274E27650073E75F /* IngredientViewController.swift in Sources */,
+				855BE384275CCFE600F51E1B /* ImageCell.swift in Sources */,
 				85DCFF81274B851900EA30A0 /* DetailViewController.swift in Sources */,
 				85DCFFB1274B855A00EA30A0 /* Constants.swift in Sources */,
 				85DCFFA5274B855000EA30A0 /* Endpoints.swift in Sources */,
@@ -988,6 +1020,7 @@
 				85DCFF91274B853C00EA30A0 /* AuthorizationViewController.swift in Sources */,
 				85DCFF4D274B84BC00EA30A0 /* SceneDelegate.swift in Sources */,
 				85DCFF95274B854000EA30A0 /* CategoriesNetworkService.swift in Sources */,
+				855BE387275CCFE900F51E1B /* VideoCell.swift in Sources */,
 				85DCFF75274B850F00EA30A0 /* DishNameCell.swift in Sources */,
 				85DCFF71274B850200EA30A0 /* MainPresenter.swift in Sources */,
 				85DCFF5D274B84CB00EA30A0 /* CategoryCollectionViewCell.swift in Sources */,
@@ -1001,6 +1034,7 @@
 				85DCFF89274B852400EA30A0 /* FavoriteFoodRouter.swift in Sources */,
 				85DCFF8D274B853400EA30A0 /* FavoriteFoodViewController.swift in Sources */,
 				85DCFF85274B851C00EA30A0 /* DetailPresenter.swift in Sources */,
+				855BE396275CD57D00F51E1B /* FavoriteFoodPresenterTest.swift in Sources */,
 				85DCFFA1274B854B00EA30A0 /* Category.swift in Sources */,
 				85DC0058274D389800EA30A0 /* FavoriteFoodPresenter.swift in Sources */,
 				85DCFFBD274B858B00EA30A0 /* UIImageExtension.swift in Sources */,
