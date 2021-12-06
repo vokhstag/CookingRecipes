@@ -8,25 +8,36 @@
 import XCTest
 
 class FavoriteFoodRouterTest: XCTestCase {
+    var assemblyBuilder: MockAssemblyBuilder!
+    var router: FavoriteFoodRouter!
+    var dataManager: MockDishesDataManager!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        assemblyBuilder = MockAssemblyBuilder()
+        dataManager = MockDishesDataManager()
+        router = FavoriteFoodRouter(tabBarController: nil,
+                                    navigationController: UINavigationController(),
+                                    assemblyBuilder: assemblyBuilder,
+                                    dishesDataManager: dataManager)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        router = nil
+        assemblyBuilder = nil
+        dataManager = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testThatInitialViewControllerMethodAddsControllerAtNavigationStack() {
+        // act
+        router.initialViewController()
+        // aseert
+        XCTAssertNotNil(router.navigationController.viewControllers.first,
+                        "Method InitialViewController didn't add viewController at the navigation stack")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testThatShowDetailControllerMethodAddsControllerAtNavigationStack() {
+        // act
+        router.showDetailController(dish: Dish())
+        // aseert
+        XCTAssertNotNil(router.navigationController.viewControllers.first,
+                        "Method showDetailController didn't add viewController at the navigation stack")
     }
-
 }

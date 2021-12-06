@@ -7,26 +7,42 @@
 
 import XCTest
 
-class FavoriteFoodPresenterTest: XCTestCase {
+class MockFavoriteFoodRouter: FavoriteFoodRouterProtocol {
+    var tabBarController: UITabBarController?
+    var navigationController: UINavigationController = UINavigationController()
+    var assemblyBuilder: AssemblyBuilderProtocol?
+    var showDetailControllerCalled = false
+    func initialViewController() {
+    }
+    func showDetailController(dish: Dish) {
+        showDetailControllerCalled = true
+    }
+    func showIngredientController(url: URL?, name: String, measure: String?) {
+    }
+}
 
+class FavoriteFoodPresenterTest: XCTestCase {
+    var router: MockFavoriteFoodRouter!
+    var dataManager: MockDishesDataManager!
+    var presenter: FavoriteFoodPresenter!
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        router = MockFavoriteFoodRouter()
+        dataManager = MockDishesDataManager()
+        presenter = FavoriteFoodPresenter(router: router,
+                                          dishesDataManager: dataManager)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        router = nil
+        dataManager = nil
+        presenter = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testThatMethodGoToDetailRecipeCallRouterShowDetailController() {
+        // arranged
+        let dish = Dish()
+        // act
+        presenter.goToDetailRecipe(dish: dish)
+        // assert
+        XCTAssertTrue(router.showDetailControllerCalled, "method showDetailController() was not called")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
