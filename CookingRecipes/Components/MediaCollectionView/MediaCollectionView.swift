@@ -54,8 +54,6 @@ class MediaCollectionView: UIView {
             }
         }
     }
-    var collectionViewTapped: (() -> Void)?
-    var collectionViewTappedWithIndex: ((Int) -> Void)?
     // MARK: - Constructor
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -101,12 +99,6 @@ extension MediaCollectionView: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         pageControll.currentPage = indexPath.row
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let _ = collectionView.cellForItem(at: indexPath) as? ImageCell {
-            collectionViewTapped?()
-            collectionViewTappedWithIndex?(indexPath.row)
-        }
     }
 }
 // MARK: - Setup
