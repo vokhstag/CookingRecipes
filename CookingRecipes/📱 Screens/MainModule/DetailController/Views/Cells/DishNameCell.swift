@@ -12,11 +12,10 @@ class DishNameCell: UITableViewCell {
         return String(describing: self)
     }
     // MARK: - UI
-    lazy var dishImageView: UIImageView = {
-        let imageView = UIImageView()
-        self.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    var mediaView: MediaCollectionView = {
+        let mediaView = MediaCollectionView()
+        mediaView.translatesAutoresizingMaskIntoConstraints = false
+        return mediaView
     }()
     lazy var dishNameLabel: UILabel = {
         let label = UILabel()
@@ -44,35 +43,43 @@ class DishNameCell: UITableViewCell {
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
-        dishImageView.layer.cornerRadius = 16
+        mediaView.layer.cornerRadius = 16
     }
     // MARK: - Configure
-    func configure(url: URL?, name: String?, country: String?) {
+    func configure(url: URL?, videoURL: URL?, name: String?, country: String?) {
         dishNameLabel.text = name
         dishCountryLabel.text = country
+        var mediaURLs: [URL] = []
         if let url = url {
-            dishImageView.setImage(from: url)
-            dishImageView.clipsToBounds = true
+            mediaURLs.append(url)
+            mediaView.clipsToBounds = true
         }
+        if let videoUrl = videoURL {
+            mediaURLs.append(videoUrl)
+        }
+        mediaView.media = mediaURLs
     }
 }
 // MARK: - Setup
 private extension DishNameCell {
     func setup() {
+        self.layoutIfNeeded()
         setupUI()
         self.backgroundColor = .clear
+        self.selectionStyle = .none
     }
     func setupUI() {
+        self.addSubview(mediaView)
         NSLayoutConstraint.activate([
-            dishImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            dishImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13),
-            dishImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -13),
-            dishImageView.heightAnchor.constraint(equalTo: dishImageView.widthAnchor, multiplier: 0.75)
+            mediaView.topAnchor.constraint(equalTo: self.topAnchor),
+            mediaView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13),
+            mediaView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -13),
+            mediaView.heightAnchor.constraint(equalTo: mediaView.widthAnchor, multiplier: 0.75)
         ])
         NSLayoutConstraint.activate([
             dishNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             dishNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            dishNameLabel.topAnchor.constraint(equalTo: dishImageView.bottomAnchor, constant: 20)
+            dishNameLabel.topAnchor.constraint(equalTo: mediaView.bottomAnchor, constant: 20)
         ])
         let dishBottomAnchor = dishNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25)
         dishBottomAnchor.priority = UILayoutPriority(250)

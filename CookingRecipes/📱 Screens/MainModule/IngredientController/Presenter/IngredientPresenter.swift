@@ -17,7 +17,7 @@ class IngredientPresenter: IngredientPresenterProtocol {
     var imageURL: URL?
     var name: String
     var measure: String?
-    
+    // MARK: - Constructor
     init(imageURL: URL?, name: String, measure: String?) {
         self.imageURL = imageURL
         self.name = name

@@ -31,7 +31,8 @@ class TabBarRouter: TabBarRouterProtocol {
                                     dishesDataManager: dishesDataManager)
         let favoriteFoodRouter = FavoriteFoodRouter(tabBarController: self.tabBarController,
                                                     navigationController: favoriteFoodNavigationController,
-                                                    assemblyBuilder: self.assemblyBuilder, dishesDataManager: dishesDataManager)
+                                                    assemblyBuilder: self.assemblyBuilder,
+                                                    dishesDataManager: dishesDataManager)
         mainRouter.initialViewController()
         favoriteFoodRouter.initialViewController()
         self.tabBarController?.setViewControllers(

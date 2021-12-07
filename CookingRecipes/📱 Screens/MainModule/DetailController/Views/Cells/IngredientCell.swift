@@ -27,7 +27,6 @@ class IngredientCell: UITableViewCell {
         imageContentView.addSubview(imageView)
         return imageView
     }()
-    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +86,5 @@ private extension IngredientCell {
             nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: measureLabel.leadingAnchor, constant: 8)
         ])
-        
     }
 }
