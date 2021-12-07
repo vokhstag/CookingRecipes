@@ -84,6 +84,10 @@ class MainContainerViewController: UIViewController {
         collectionView.startLoading()
         presenter.getCategories()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchTextField.resignFirstResponder()
+    }
 }
 
 // MARK: - UICollectionView DataSource
@@ -110,6 +114,7 @@ extension MainContainerViewController: UICollectionViewDataSource {
 // MARK: - UICollectionView Delegate
 extension MainContainerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchTextField.resignFirstResponder()
         let selectedCategory = presenter.categories[indexPath.row]
         presenter.selectedCategoryName = selectedCategory.name
         guard let selectedCell = collectionView.cellForItem(at: indexPath) as?
@@ -226,6 +231,7 @@ private extension MainContainerViewController {
         self.present(alert, animated: true)
     }
     @objc func searchTapped() {
+        searchTextField.resignFirstResponder()
         if let text = searchTextField.text, text != "" {
             presenter.searchByName(text: text)
         }

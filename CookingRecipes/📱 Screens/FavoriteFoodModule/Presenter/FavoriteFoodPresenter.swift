@@ -9,7 +9,7 @@ import Foundation
 
 protocol FavoriteFoodPresenterProtocol {
     var dishes: [FavoriteFood] { get }
-    func goToDetailRecipe(dish: FavoriteFood)
+    func goToDetailRecipe(dish: Dish)
 }
 
 class FavoriteFoodPresenter: FavoriteFoodPresenterProtocol {
@@ -22,7 +22,7 @@ class FavoriteFoodPresenter: FavoriteFoodPresenterProtocol {
         self.dishesDataManager = dishesDataManager
         self.router = router
     }
-    func goToDetailRecipe(dish: FavoriteFood) {
-        router.showDetailController(dish: dish.getDish())
+    func goToDetailRecipe(dish: Dish) {
+        router.showDetailController(dish: dish)
     }
 }

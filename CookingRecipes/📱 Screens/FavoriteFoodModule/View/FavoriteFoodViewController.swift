@@ -61,7 +61,7 @@ extension FavoriteFoodViewController: UICollectionViewDataSource {
 extension FavoriteFoodViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dish = presenter.dishes[indexPath.row]
-        presenter.goToDetailRecipe(dish: dish)
+        presenter.goToDetailRecipe(dish: dish.getDish())
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout

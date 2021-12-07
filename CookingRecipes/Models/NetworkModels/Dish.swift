@@ -106,6 +106,12 @@ struct Dish: Decodable {
     init() {
         self.id = ""
     }
+    func getVideoURL() -> URL? {
+        guard let videoUrlStr = youtube else { return nil }
+        let videoCode = videoUrlStr.split(separator: "=").last
+        guard let code = videoCode else { return nil}
+        return URL(string: "https://www.youtube.com/embed/\(code)")
+    }
 }
 
 struct Meals: Decodable {
